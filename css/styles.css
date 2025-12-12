@@ -1,1154 +1,466 @@
 /* =========================================================
-   RESET BÁSICO
+   RESET
    ========================================================= */
-
    *,
    *::before,
-   *::after {
-       box-sizing: border-box;
-   }
+   *::after { box-sizing: border-box; }
    
-   html {
-       scroll-behavior: smooth;
-   }
+   html { scroll-behavior: smooth; }
    
    body {
-       margin: 0;
-       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-       font-size: 16px;
-       line-height: 1.5;
-       background-color: #f7f5f2;
-       color: #222222;
-       overflow-x: hidden;
+     margin: 0;
+     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+     font-size: 16px;
+     line-height: 1.5;
+     background: var(--color-bg);
+     color: var(--color-text);
+     overflow-x: hidden;
    }
    
-   img {
-       max-width: 100%;
-       display: block;
-   }
+   img { max-width: 100%; display: block; }
+   a { color: inherit; text-decoration: none; }
+   button { font: inherit; border: none; background: none; cursor: pointer; }
+   ul { list-style: none; padding: 0; margin: 0; }
    
-   a {
-       color: inherit;
-       text-decoration: none;
-   }
-   
-   button {
-       font: inherit;
-       border: none;
-       background: none;
-       cursor: pointer;
-   }
-   
-   ul {
-       list-style: none;
-       padding: 0;
-       margin: 0;
-   }
-   
-   /* Para cuando hay menú o modal abierto */
-   body.no-scroll {
-       overflow: hidden;
-   }
+   body.no-scroll { overflow: hidden; }
    
    /* =========================================================
-      VARIABLES DE TEMA
+      VARIABLES
       ========================================================= */
-   
    :root {
-       --color-bg: #f7f5f2;
-       --color-bg-soft: #ffffff;
-       --color-bg-strong: #ede6dd;
+     --color-bg: #f7f5f2;
+     --color-bg-soft: #ffffff;
+     --color-bg-strong: #ede6dd;
    
-       --color-text: #222222;
-       --color-text-soft: #555555;
+     --color-text: #222222;
+     --color-text-soft: #555555;
    
-       --color-border: #ded6cb;
-       --color-border-soft: #ece3d8;
+     --color-border: #ded6cb;
+     --color-border-soft: #ece3d8;
    
-       --color-accent: #b0282b;    /* guiño a Madrid / burdeos */
-       --color-accent-soft: rgba(176, 40, 43, 0.08);
+     --color-accent: #b0282b;
+     --color-accent-soft: rgba(176, 40, 43, 0.08);
    
-       --color-muted: #a39a8f;
+     --color-muted: #a39a8f;
    
-       --radius-sm: 8px;
-       --radius-md: 14px;
-       --radius-lg: 18px;
+     --radius-sm: 8px;
+     --radius-md: 14px;
+     --radius-lg: 18px;
    
-       --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
+     --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
    
-       --container-width: 1120px;
-       --header-height: 68px;
+     --container-width: 1120px;
+     --header-height: 68px;
    
-       --transition-fast: 0.18s ease-out;
-       --transition-med: 0.25s ease-out;
+     --transition-fast: 0.18s ease-out;
+     --transition-med: 0.25s ease-out;
    }
    
-   /* Tema oscuro */
    body.theme-dark {
-       --color-bg: #111111;
-       --color-bg-soft: #181818;
-       --color-bg-strong: #202020;
+     --color-bg: #111111;
+     --color-bg-soft: #181818;
+     --color-bg-strong: #202020;
    
-       --color-text: #f5f5f5;
-       --color-text-soft: #cccccc;
+     --color-text: #f5f5f5;
+     --color-text-soft: #cccccc;
    
-       --color-border: #333333;
-       --color-border-soft: #262626;
+     --color-border: #333333;
+     --color-border-soft: #262626;
    
-       --color-accent: #e74c3c;
-       --color-accent-soft: rgba(231, 76, 60, 0.16);
+     --color-accent: #e74c3c;
+     --color-accent-soft: rgba(231, 76, 60, 0.16);
    
-       --color-muted: #888888;
-   
-       background-color: var(--color-bg);
-       color: var(--color-text);
+     --color-muted: #888888;
    }
    
    /* =========================================================
       LAYOUT
       ========================================================= */
-   
    .container {
-       width: 100%;
-       max-width: var(--container-width);
-       margin: 0 auto;
-       padding: 0 20px;
+     width: 100%;
+     max-width: var(--container-width);
+     margin: 0 auto;
+     padding: 0 20px;
    }
    
-   /* Espacio para el header fijo */
-   body {
-       padding-top: var(--header-height);
-   }
+   /* Solo páginas con header fijo necesitan padding */
+   body.has-header { padding-top: var(--header-height); }
+   body.no-header  { padding-top: 0; }
    
    /* =========================================================
-      HEADER Y NAVEGACIÓN
+      HEADER
       ========================================================= */
-   
    .site-header {
-       position: fixed;
-       top: 0;
-       left: 0;
-       right: 0;
-       height: var(--header-height);
-       background-color: rgba(247, 245, 242, 0.92);
-       backdrop-filter: blur(10px);
-       border-bottom: 1px solid var(--color-border-soft);
-       z-index: 1000;
+     position: fixed;
+     top: 0; left: 0; right: 0;
+     height: var(--header-height);
+     background-color: rgba(247, 245, 242, 0.92);
+     backdrop-filter: blur(10px);
+     border-bottom: 1px solid var(--color-border-soft);
+     z-index: 1000;
    }
-   
-   body.theme-dark .site-header {
-       background-color: rgba(17, 17, 17, 0.92);
-   }
+   body.theme-dark .site-header { background-color: rgba(17,17,17,0.92); }
    
    .header-inner {
-       height: 100%;
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-       gap: 16px;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 16px;
    }
    
-   /* Logo */
    .site-logo {
-       display: flex;
-       align-items: center;
-       gap: 10px;
-       font-size: 18px;
-       letter-spacing: 0.08em;
-       text-transform: uppercase;
-       font-weight: 600;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     font-size: 18px;
+     letter-spacing: 0.08em;
+     text-transform: uppercase;
+     font-weight: 600;
    }
    
    .site-logo__mark {
-       width: 30px;
-       height: 30px;
-       border-radius: 999px;
-       border: 1px solid var(--color-border);
-       display: inline-flex;
-       align-items: center;
-       justify-content: center;
-       font-size: 16px;
-       background-color: var(--color-bg-soft);
+     width: 30px; height: 30px;
+     border-radius: 999px;
+     border: 1px solid var(--color-border);
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     background: var(--color-bg-soft);
    }
    
-   .site-logo__text {
-       font-weight: 600;
-   }
-   
-   /* Nav */
-   .main-nav {
-       display: flex;
-       align-items: center;
-       gap: 20px;
-   }
-   
+   .main-nav { display: flex; align-items: center; gap: 20px; }
    .main-nav__list {
-       display: flex;
-       align-items: center;
-       gap: 18px;
-       font-size: 14px;
-       text-transform: uppercase;
-       letter-spacing: 0.08em;
+     display: flex; align-items: center; gap: 18px;
+     font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em;
    }
-   
-   .main-nav__list a {
-       padding: 6px 0;
-       position: relative;
-       color: var(--color-text-soft);
-       transition: color var(--transition-fast);
-   }
-   
+   .main-nav__list a { color: var(--color-text-soft); padding: 6px 0; position: relative; }
+   .main-nav__list a.is-current { color: var(--color-text); }
    .main-nav__list a::after {
-       content: "";
-       position: absolute;
-       left: 0;
-       bottom: -4px;
-       width: 0;
-       height: 1px;
-       background-color: var(--color-accent);
-       transition: width var(--transition-fast);
+     content: "";
+     position: absolute; left: 0; bottom: -4px;
+     width: 0; height: 1px;
+     background: var(--color-accent);
+     transition: width var(--transition-fast);
    }
+   .main-nav__list a.is-current::after { width: 18px; }
    
-   .main-nav__list a:hover {
-       color: var(--color-text);
-   }
-   
-   .main-nav__list a.is-current {
-       color: var(--color-text);
-   }
-   
-   .main-nav__list a.is-current::after {
-       width: 18px;
-   }
-   
-   /* Burger */
    .burger {
-       width: 34px;
-       height: 30px;
-       border-radius: 999px;
-       border: 1px solid var(--color-border-soft);
-       display: none;
-       flex-direction: column;
-       justify-content: center;
-       align-items: center;
-       gap: 5px;
-       background-color: var(--color-bg-soft);
+     width: 34px; height: 30px;
+     border-radius: 999px;
+     border: 1px solid var(--color-border-soft);
+     display: none;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     gap: 5px;
+     background: var(--color-bg-soft);
    }
+   .burger__line { width: 18px; height: 2px; border-radius: 999px; background: var(--color-text); }
    
-   .burger__line {
-       width: 18px;
-       height: 2px;
-       border-radius: 999px;
-       background-color: var(--color-text);
-   }
-   
-   /* Botón tema */
    .theme-toggle {
-       width: 40px;
-       height: 28px;
-       border-radius: 999px;
-       padding: 0 2px;
-       display: inline-flex;
-       align-items: center;
-       justify-content: space-between;
-       border: 1px solid var(--color-border-soft);
-       background-color: var(--color-bg-soft);
-       font-size: 14px;
+     width: 40px; height: 28px;
+     border-radius: 999px;
+     padding: 0 2px;
+     display: inline-flex;
+     align-items: center;
+     justify-content: space-between;
+     border: 1px solid var(--color-border-soft);
+     background: var(--color-bg-soft);
+     font-size: 14px;
    }
-   
-   .theme-toggle__icon {
-       flex: 1;
-       text-align: center;
-       opacity: 0.35;
-       transition: opacity var(--transition-fast), transform var(--transition-fast);
-   }
-   
+   .theme-toggle__icon { flex: 1; text-align: center; opacity: .35; transition: opacity var(--transition-fast), transform var(--transition-fast); }
    body.theme-dark .theme-toggle__icon--dark,
-   body:not(.theme-dark) .theme-toggle__icon--light {
-       opacity: 1;
-       transform: translateY(-1px);
-   }
+   body:not(.theme-dark) .theme-toggle__icon--light { opacity: 1; transform: translateY(-1px); }
    
    /* =========================================================
-      HERO / PORTADA
+      HERO SUBPAGE
       ========================================================= */
-   
-   .hero {
-       padding: 60px 0 64px;
-   }
-   
-   .hero--subpage {
-       padding-top: 40px;
-       padding-bottom: 40px;
-       border-bottom: 1px solid var(--color-border-soft);
-   }
-   
-   .hero__inner {
-       display: grid;
-       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-       gap: 40px;
-       align-items: center;
-   }
-   
-   .hero__content {
-       max-width: 640px;
-   }
-   
-   .hero__eyebrow {
-       font-size: 12px;
-       text-transform: uppercase;
-       letter-spacing: 0.16em;
-       color: var(--color-muted);
-       margin: 0 0 10px;
-   }
-   
-   .hero__title {
-       font-size: clamp(32px, 4vw, 40px);
-       line-height: 1.1;
-       margin: 0 0 14px;
-   }
-   
-   .hero__subtitle {
-       margin: 0 0 24px;
-       color: var(--color-text-soft);
-       max-width: 520px;
-   }
-   
-   .hero__actions {
-       display: flex;
-       flex-wrap: wrap;
-       gap: 10px;
-   }
-   
-   /* Placeholder media hero */
-   .hero__media {
-       justify-self: end;
-   }
-   
-   .hero__placeholder {
-       width: 100%;
-       min-height: 220px;
-       border-radius: var(--radius-lg);
-       border: 1px solid var(--color-border-soft);
-       background: radial-gradient(circle at top, #f0e3d6 0, #f7f5f2 40%, #f7f5f2 100%);
-       position: relative;
-       box-shadow: var(--shadow-soft);
-   }
-   
-   body.theme-dark .hero__placeholder {
-       background: radial-gradient(circle at top, #2a2723 0, #111111 40%, #111111 100%);
-   }
-   
-   .hero__placeholder-label {
-       position: absolute;
-       bottom: 14px;
-       left: 16px;
-       font-size: 12px;
-       letter-spacing: 0.12em;
-       text-transform: uppercase;
-       color: var(--color-muted);
-   }
+   .hero { padding: 40px 0; border-bottom: 1px solid var(--color-border-soft); }
+   .hero__eyebrow { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-muted); margin: 0 0 10px; }
+   .hero__title { margin: 0 0 10px; font-size: clamp(30px, 4vw, 40px); line-height: 1.1; font-family: "Playfair Display", serif; }
+   .hero__subtitle { margin: 0; color: var(--color-text-soft); max-width: 520px; }
    
    /* =========================================================
-      SECCIONES GENERALES
+      SECTIONS
       ========================================================= */
-   
-   .section {
-       padding: 48px 0;
-       border-bottom: 1px solid var(--color-border-soft);
-   }
-   
-   .section__header {
-       display: flex;
-       flex-direction: column;
-       gap: 10px;
-       margin-bottom: 24px;
-       max-width: 640px;
-   }
-   
-   .section__title {
-       margin: 0;
-       font-size: 22px;
-   }
-   
-   .section__intro {
-       margin: 0;
-       color: var(--color-text-soft);
-       font-size: 15px;
-   }
+   .section { padding: 48px 0; border-bottom: 1px solid var(--color-border-soft); }
+   .section__header { max-width: 640px; margin-bottom: 24px; }
+   .section__title { margin: 0 0 10px; font-size: 22px; font-family: "Playfair Display", serif; }
+   .section__intro { margin: 0; color: var(--color-text-soft); font-size: 15px; }
    
    /* =========================================================
-      BOTONES
+      INDEX COVER (EDITORIAL)
       ========================================================= */
-   
-   .btn {
-       display: inline-flex;
-       align-items: center;
-       justify-content: center;
-       gap: 6px;
-       border-radius: 999px;
-       padding: 9px 16px;
-       font-size: 14px;
-       text-transform: uppercase;
-       letter-spacing: 0.12em;
-       border: 1px solid transparent;
-       transition:
-           background-color var(--transition-fast),
-           color var(--transition-fast),
-           border-color var(--transition-fast),
-           box-shadow var(--transition-fast),
-           transform var(--transition-fast);
+   .cover {
+     position: relative;
+     min-height: 100vh;
+     padding: 40px 28px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     overflow: hidden;
    }
    
-   .btn--primary {
-       background-color: var(--color-accent);
-       color: #ffffff;
-       box-shadow: 0 10px 25px rgba(176, 40, 43, 0.25);
+   .cover__bg {
+     position: absolute;
+     inset: 0;
+     background-image:
+       linear-gradient(to top, rgba(0,0,0,0.42), rgba(0,0,0,0.10)),
+       url("../img/header.jpg");
+     background-size: cover;
+     background-position: center;
+     z-index: -2;
    }
    
-   .btn--primary:hover {
-       transform: translateY(-1px);
-       box-shadow: 0 16px 32px rgba(176, 40, 43, 0.32);
+   .cover::before {
+     content: "";
+     position: absolute;
+     inset: 0;
+     background-image: radial-gradient(circle at top, rgba(255,255,255,0.10), transparent 55%);
+     mix-blend-mode: soft-light;
+     pointer-events: none;
+     z-index: -1;
    }
    
-   .btn--ghost {
-       background-color: transparent;
-       color: var(--color-text);
-       border-color: var(--color-border);
+   .corner {
+     position: absolute;
+     font-size: 13px;
+     letter-spacing: 0.22em;
+     text-transform: uppercase;
+     color: rgba(255,255,255,0.88);
+     transition: opacity .2s ease;
+   }
+   .corner:hover { opacity: .6; }
+   
+   .corner--tl { top: 24px; left: 28px; }
+   .corner--tr { top: 24px; right: 28px; }
+   .corner--bl { bottom: 28px; left: 28px; }
+   .corner--br { bottom: 28px; right: 28px; }
+   
+   .cover__center {
+     max-width: 720px;
+     color: #f8f3ec;
+     margin-top: 10vh;
    }
    
-   .btn--ghost:hover {
-       background-color: var(--color-accent-soft);
-       border-color: var(--color-accent);
+   .cover__eyebrow {
+     font-size: 12px;
+     letter-spacing: 0.22em;
+     text-transform: uppercase;
+     margin: 0 0 14px;
+     opacity: .85;
    }
    
-   .btn--sm {
-       font-size: 12px;
-       padding: 6px 12px;
+   .cover__title {
+     margin: 0 0 12px;
+     font-family: "Playfair Display", serif;
+     font-weight: 600;
+     font-size: clamp(42px, 6vw, 60px);
+     line-height: 1.05;
    }
+   .cover__title span { display: block; font-weight: 500; }
+   
+   .cover__subtitle {
+     margin: 0;
+     max-width: 460px;
+     font-size: 15px;
+     opacity: .92;
+   }
+   
+   .cover__scroll {
+     position: absolute;
+     left: 50%;
+     transform: translateX(-50%);
+     bottom: 24px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 6px;
+     font-size: 11px;
+     letter-spacing: 0.22em;
+     text-transform: uppercase;
+     color: rgba(248,243,236,0.78);
+   }
+   .cover__line { width: 1px; height: 32px; background: rgba(248,243,236,0.75); }
+   
+   /* CTA cards index */
+   .cta-grid {
+     display: grid;
+     grid-template-columns: repeat(2, minmax(0, 1fr));
+     gap: 18px;
+   }
+   
+   .cta-card {
+     border-radius: var(--radius-md);
+     border: 1px solid var(--color-border-soft);
+     background: var(--color-bg-soft);
+     padding: 18px 16px;
+     transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
+   }
+   .cta-card h3 { margin: 0 0 6px; font-size: 16px; }
+   .cta-card p { margin: 0 0 10px; color: var(--color-text-soft); font-size: 14px; }
+   .cta-card__link { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); }
+   .cta-card:hover { transform: translateY(-2px); border-color: var(--color-accent); box-shadow: var(--shadow-soft); }
    
    /* =========================================================
-      GRID "POR QUÉ MADRID"
+      VISITAS
       ========================================================= */
-   
-   .features-grid {
-       display: grid;
-       grid-template-columns: repeat(3, minmax(0, 1fr));
-       gap: 18px;
-   }
-   
-   .feature-card {
-       border-radius: var(--radius-md);
-       border: 1px solid var(--color-border-soft);
-       background-color: var(--color-bg-soft);
-       padding: 18px 16px;
-   }
-   
-   .feature-card__title {
-       font-size: 16px;
-       margin: 0 0 8px;
-   }
-   
-   .feature-card__text {
-       margin: 0;
-       font-size: 14px;
-       color: var(--color-text-soft);
-   }
-   
-   /* =========================================================
-      BARRIOS DESTACADOS
-      ========================================================= */
-   
-   .neighborhoods-grid {
-       display: grid;
-       grid-template-columns: repeat(4, minmax(0, 1fr));
-       gap: 18px;
-   }
-   
-   .neighborhood-card {
-       border-radius: var(--radius-md);
-       border: 1px solid var(--color-border-soft);
-       background-color: var(--color-bg-soft);
-       padding: 18px 16px 16px;
-       display: flex;
-       flex-direction: column;
-       gap: 10px;
-       transition: box-shadow var(--transition-med), transform var(--transition-med), border-color var(--transition-med);
-   }
-   
-   .neighborhood-card__title {
-       margin: 0;
-       font-size: 16px;
-   }
-   
-   .neighborhood-card__subtitle {
-       margin: 4px 0 0;
-       font-size: 13px;
-       color: var(--color-text-soft);
-   }
-   
-   .neighborhood-card__text {
-       margin: 0;
-       font-size: 14px;
-       color: var(--color-text-soft);
-   }
-   
-   .neighborhood-card__tags {
-       display: flex;
-       flex-wrap: wrap;
-       gap: 6px;
-       font-size: 11px;
-       color: var(--color-muted);
-   }
-   
-   .neighborhood-card__tags li {
-       padding: 3px 8px;
-       border-radius: 999px;
-       border: 1px solid var(--color-border-soft);
-       background-color: var(--color-bg);
-   }
-   
-   .neighborhood-card__link {
-       margin-top: auto;
-       font-size: 12px;
-       text-transform: uppercase;
-       letter-spacing: 0.12em;
-       color: var(--color-accent);
-   }
-   
-   .neighborhood-card:hover {
-       border-color: var(--color-accent);
-       box-shadow: var(--shadow-soft);
-       transform: translateY(-2px);
-   }
-   
-   /* =========================================================
-      SECCIÓN PLANIFICA / CLIMA TEASER
-      ========================================================= */
-   
-   .section--plan__inner {
-       display: grid;
-       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-       gap: 32px;
-       align-items: center;
-   }
-   
-   .section--plan__preview {
-       border-radius: var(--radius-md);
-       border: 1px dashed var(--color-border);
-       padding: 18px 16px;
-       font-size: 14px;
-       color: var(--color-text-soft);
-   }
-   
-   /* =========================================================
-      VISITAS.HTML – FILTROS
-      ========================================================= */
-   
-   .section--filters {
-       padding-bottom: 16px;
-   }
+   .section--filters { padding-bottom: 16px; }
    
    .visits-filters {
-       display: flex;
-       flex-wrap: wrap;
-       gap: 10px;
-       margin-top: 10px;
+     display: flex;
+     flex-wrap: wrap;
+     gap: 10px;
    }
    
    .visits-filter {
-       font-size: 12px;
-       padding: 7px 12px;
-       border-radius: 999px;
-       border: 1px solid var(--color-border);
-       background-color: var(--color-bg-soft);
-       text-transform: uppercase;
-       letter-spacing: 0.12em;
-       color: var(--color-text-soft);
-       transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+     font-size: 12px;
+     padding: 7px 12px;
+     border-radius: 999px;
+     border: 1px solid var(--color-border);
+     background: var(--color-bg-soft);
+     text-transform: uppercase;
+     letter-spacing: 0.12em;
+     color: var(--color-text-soft);
+     transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
    }
-   
    .visits-filter.is-active,
    .visits-filter:hover {
-       border-color: var(--color-accent);
-       background-color: var(--color-accent-soft);
-       color: var(--color-text);
+     border-color: var(--color-accent);
+     background: var(--color-accent-soft);
+     color: var(--color-text);
    }
    
-   /* GRID VISITAS */
-   
    .visits-grid {
-       display: grid;
-       grid-template-columns: repeat(3, minmax(0, 1fr));
-       gap: 20px;
+     display: grid;
+     grid-template-columns: repeat(3, minmax(0, 1fr));
+     gap: 20px;
    }
    
    .visit-card {
-       display: flex;
-       flex-direction: column;
-       border-radius: var(--radius-md);
-       border: 1px solid var(--color-border-soft);
-       background-color: var(--color-bg-soft);
-       overflow: hidden;
-       min-height: 240px;
-       transition: box-shadow var(--transition-med), transform var(--transition-med), border-color var(--transition-med);
+     border-radius: var(--radius-md);
+     border: 1px solid var(--color-border-soft);
+     background: var(--color-bg-soft);
+     overflow: hidden;
+     transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
    }
+   .visit-card__media { height: 140px; background: linear-gradient(135deg, #f0e3d6, #f7f5f2); }
+   body.theme-dark .visit-card__media { background: linear-gradient(135deg, #26221e, #111111); }
    
-   .visit-card__media {
-       height: 140px;
-       background: linear-gradient(135deg, #f0e3d6, #f7f5f2);
-   }
-   
-   body.theme-dark .visit-card__media {
-       background: linear-gradient(135deg, #26221e, #111111);
-   }
-   
-   .visit-card__placeholder {
-       height: 100%;
-       display: flex;
-       align-items: flex-end;
-       padding: 10px 12px;
-       font-size: 12px;
-       letter-spacing: 0.12em;
-       text-transform: uppercase;
-       color: var(--color-muted);
-   }
-   
-   .visit-card__body {
-       padding: 14px 14px 12px;
-       display: flex;
-       flex-direction: column;
-       gap: 8px;
-   }
-   
-   .visit-card__title {
-       margin: 0 0 4px;
-       font-size: 16px;
-   }
-   
-   .visit-card__meta {
-       margin: 0;
-       font-size: 12px;
-       color: var(--color-muted);
-   }
-   
-   .visit-card__text {
-       margin: 0;
-       font-size: 14px;
-       color: var(--color-text-soft);
-   }
-   
-   .visit-card__tags {
-       display: flex;
-       flex-wrap: wrap;
-       gap: 6px;
-       font-size: 11px;
-       color: var(--color-muted);
-   }
-   
-   .visit-card__tags li {
-       padding: 3px 8px;
-       border-radius: 999px;
-       border: 1px solid var(--color-border-soft);
-       background-color: var(--color-bg);
-   }
-   
-   .visit-card__actions {
-       margin-top: auto;
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-       gap: 8px;
-       margin-top: 10px;
-   }
-   
-   .visit-card__more {
-       font-size: 12px;
-       text-transform: uppercase;
-       letter-spacing: 0.12em;
-       color: var(--color-accent);
-   }
+   .visit-card__body { padding: 14px; }
+   .visit-card__title { margin: 0 0 4px; font-size: 16px; }
+   .visit-card__meta { margin: 0 0 8px; font-size: 12px; color: var(--color-muted); }
+   .visit-card__text { margin: 0; font-size: 14px; color: var(--color-text-soft); }
    
    .visit-card:hover {
-       border-color: var(--color-accent);
-       box-shadow: var(--shadow-soft);
-       transform: translateY(-2px);
+     transform: translateY(-2px);
+     border-color: var(--color-accent);
+     box-shadow: var(--shadow-soft);
    }
    
    /* =========================================================
-      MODAL VISITA
+      CLIMA (lavado rápido: layout + cards)
       ========================================================= */
-   
-   .visit-modal {
-       position: fixed;
-       inset: 0;
-       display: none;
-       z-index: 1100;
+   .climate-layout {
+     display: grid;
+     grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+     gap: 18px;
+     align-items: start;
    }
    
-   .visit-modal.is-visible {
-       display: block;
+   .climate-card {
+     border-radius: var(--radius-md);
+     border: 1px solid var(--color-border-soft);
+     background: var(--color-bg-soft);
+     padding: 18px 16px;
    }
    
-   .visit-modal__overlay {
-       position: absolute;
-       inset: 0;
-       background-color: rgba(0, 0, 0, 0.45);
+   .climate-card__title {
+     margin: 0 0 8px;
+     font-family: "Playfair Display", serif;
+     font-size: 18px;
    }
    
-   .visit-modal__dialog {
-       position: relative;
-       max-width: 520px;
-       margin: 60px auto;
-       padding: 20px 20px 18px;
-       border-radius: var(--radius-lg);
-       background-color: var(--color-bg-soft);
-       box-shadow: var(--shadow-soft);
-       z-index: 1;
+   .climate-card__text {
+     margin: 0 0 12px;
+     color: var(--color-text-soft);
+     font-size: 14px;
    }
    
-   .visit-modal__close {
-       position: absolute;
-       top: 10px;
-       right: 12px;
-       font-size: 20px;
-       line-height: 1;
-       color: var(--color-muted);
+   .climate-chart {
+     border-radius: var(--radius-md);
+     border: 1px solid var(--color-border-soft);
+     background: var(--color-bg);
+     height: 320px;
+     padding: 12px;
    }
-   
-   .visit-modal__title {
-       margin: 0 0 10px;
-       font-size: 18px;
-   }
-   
-   .visit-modal__text {
-       margin: 0;
-       font-size: 14px;
-       color: var(--color-text-soft);
-   }
-   
-   /* =========================================================
-      CLIMA.HTML – CHART + TABS
-      ========================================================= */
-   
-   .section__header--climate {
-       display: flex;
-       align-items: flex-start;
-       justify-content: space-between;
-       gap: 20px;
-   }
-   
-   .climate-chart__wrapper {
-       margin-top: 16px;
-       border-radius: var(--radius-md);
-       border: 1px solid var(--color-border-soft);
-       background-color: var(--color-bg-soft);
-       padding: 14px;
-       height: 320px;
-       position: relative;
-   }
-   
-   /* Unidad ºC / ºF */
    
    .climate-units {
-       display: inline-flex;
-       align-items: center;
-       gap: 4px;
-       font-size: 12px;
-       text-transform: uppercase;
-       letter-spacing: 0.12em;
-       color: var(--color-muted);
+     margin-top: 12px;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     font-size: 12px;
+     text-transform: uppercase;
+     letter-spacing: 0.12em;
+     color: var(--color-muted);
    }
    
    .climate-units__btn {
-       padding: 5px 10px;
-       border-radius: 999px;
-       border: 1px solid transparent;
-       background-color: transparent;
-       color: var(--color-text-soft);
-       transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+     padding: 5px 10px;
+     border-radius: 999px;
+     border: 1px solid transparent;
+     color: var(--color-text-soft);
    }
-   
    .climate-units__btn.is-active {
-       border-color: var(--color-accent);
-       background-color: var(--color-accent-soft);
-       color: var(--color-text);
+     border-color: var(--color-accent);
+     background: var(--color-accent-soft);
+     color: var(--color-text);
    }
    
-   /* Tabs clima */
+   .climate-side { display: grid; gap: 12px; }
    
-   .climate-tabs {
-       display: flex;
-       flex-wrap: wrap;
-       gap: 8px;
-       margin-bottom: 18px;
+   .mini-panel {
+     border-radius: var(--radius-md);
+     border: 1px solid var(--color-border-soft);
+     background: var(--color-bg-soft);
+     padding: 14px 14px;
    }
-   
-   .climate-tab {
-       font-size: 12px;
-       padding: 7px 12px;
-       border-radius: 999px;
-       border: 1px solid var(--color-border);
-       background-color: var(--color-bg-soft);
-       text-transform: uppercase;
-       letter-spacing: 0.12em;
-       color: var(--color-text-soft);
-       transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
-   }
-   
-   .climate-tab.is-active,
-   .climate-tab:hover {
-       border-color: var(--color-accent);
-       background-color: var(--color-accent-soft);
-       color: var(--color-text);
-   }
-   
-   /* Panels */
-   
-   .climate-panels {
-       border-radius: var(--radius-md);
-       border: 1px solid var(--color-border-soft);
-       background-color: var(--color-bg-soft);
-       padding: 18px 16px;
-   }
-   
-   .climate-panel {
-       display: none;
-   }
-   
-   .climate-panel.is-active {
-       display: block;
-   }
-   
-   .climate-panel__title {
-       margin: 0 0 8px;
-       font-size: 17px;
-   }
-   
-   .climate-panel__text {
-       margin: 0 0 10px;
-       font-size: 14px;
-       color: var(--color-text-soft);
-   }
-   
-   .climate-panel__list {
-       margin: 0;
-       padding-left: 16px;
-   }
-   
-   .climate-panel__list li {
-       margin-bottom: 6px;
-       font-size: 14px;
-       color: var(--color-text-soft);
-   }
-   
-   /* Columnas maleta */
-   
-   .climate-panel__columns {
-       display: grid;
-       grid-template-columns: repeat(3, minmax(0, 1fr));
-       gap: 16px;
-       font-size: 14px;
-       color: var(--color-text-soft);
-   }
-   
-   .climate-panel__columns h3 {
-       margin: 0 0 6px;
-       font-size: 14px;
-   }
-   
-   /* =========================================================
-      FOOTER
-      ========================================================= */
-   
-   .site-footer {
-       padding: 20px 0;
-       font-size: 13px;
-       color: var(--color-muted);
-   }
-   
-   .site-footer__inner {
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-       gap: 12px;
-       border-top: 1px solid var(--color-border-soft);
-       padding-top: 12px;
-       margin-top: 10px;
-   }
-   
-   .site-footer__link {
-       font-size: 12px;
-       text-transform: uppercase;
-       letter-spacing: 0.14em;
-       color: var(--color-text-soft);
-   }
+   .mini-panel h3 { margin: 0 0 6px; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+   .mini-panel p { margin: 0; color: var(--color-text-soft); font-size: 14px; }
    
    /* =========================================================
       RESPONSIVE
       ========================================================= */
-   
    @media (max-width: 900px) {
-       .hero__inner {
-           grid-template-columns: minmax(0, 1fr);
-       }
-   
-       .hero__media {
-           order: -1;
-       }
-   
-       .features-grid {
-           grid-template-columns: repeat(2, minmax(0, 1fr));
-       }
-   
-       .neighborhoods-grid {
-           grid-template-columns: repeat(2, minmax(0, 1fr));
-       }
-   
-       .visits-grid {
-           grid-template-columns: repeat(2, minmax(0, 1fr));
-       }
-   
-       .section--plan__inner {
-           grid-template-columns: minmax(0, 1fr);
-       }
-   
-       .section__header--climate {
-           flex-direction: column;
-           align-items: flex-start;
-       }
-   
-       .climate-panel__columns {
-           grid-template-columns: repeat(2, minmax(0, 1fr));
-       }
+     .visits-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+     .climate-layout { grid-template-columns: minmax(0, 1fr); }
+     .cta-grid { grid-template-columns: minmax(0, 1fr); }
    }
    
    @media (max-width: 720px) {
-       body {
-           padding-top: var(--header-height);
-       }
+     .burger { display: flex; }
    
-       /* Header / Nav */
-       .burger {
-           display: flex;
-       }
+     .main-nav {
+       position: absolute;
+       top: var(--header-height);
+       left: 0; right: 0;
+       padding: 10px 20px 12px;
+       background: var(--color-bg-soft);
+       border-bottom: 1px solid var(--color-border-soft);
+       flex-direction: column;
+       gap: 12px;
+       display: none;
+     }
+     .main-nav.is-open { display: flex; }
    
-       .main-nav {
-           position: absolute;
-           top: var(--header-height);
-           right: 0;
-           left: 0;
-           padding: 10px 20px 12px;
-           background-color: var(--color-bg-soft);
-           border-bottom: 1px solid var(--color-border-soft);
-           flex-direction: column;
-           gap: 12px;
-           display: none;
-       }
+     .main-nav__list { flex-direction: column; align-items: flex-start; gap: 8px; }
    
-       .main-nav.is-open {
-           display: flex;
-       }
-   
-       .main-nav__list {
-           flex-direction: column;
-           align-items: flex-start;
-           gap: 8px;
-       }
-   
-       .section {
-           padding: 36px 0;
-       }
-   
-       .features-grid {
-           grid-template-columns: minmax(0, 1fr);
-       }
-   
-       .neighborhoods-grid {
-           grid-template-columns: minmax(0, 1fr);
-       }
-   
-       .visits-grid {
-           grid-template-columns: minmax(0, 1fr);
-       }
-   
-       .climate-panel__columns {
-           grid-template-columns: minmax(0, 1fr);
-       }
-   
-       .site-footer__inner {
-           flex-direction: column;
-           align-items: flex-start;
-       }
-   
-       .visit-modal__dialog {
-           margin: 80px 16px;
-       }
+     .cover { padding: 24px 18px; }
+     .corner--tl { top: 18px; left: 18px; }
+     .corner--tr { top: 18px; right: 18px; }
+     .corner--bl { display: none; }
+     .corner--br { bottom: 18px; right: 18px; }
    }
-   /* =========================================================
-   PORTADA EDITORIAL (INDEX)
-   ========================================================= */
-
-.hero--cover {
-    position: relative;
-    min-height: calc(100vh - var(--header-height));
-    padding: 40px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-/* Fondo tipo foto + overlay suave */
-.hero-cover__bg {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.15)),
-      url("../img/header.jpg");
-    background-size: cover;
-    background-position: center;
-    filter: saturate(1.05);
-    opacity: 0.95;
-    z-index: -2;
-}
-
-body.theme-dark .hero-cover__bg {
-    filter: saturate(1.1) contrast(1.05);
-    opacity: 0.9;
-}
-
-/* Capa sutil para textura / grano si quieres luego */
-.hero--cover::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle at top, rgba(255,255,255,0.09), transparent 55%);
-    mix-blend-mode: soft-light;
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* Corners tipo editorial */
-.hero-cover__corners {
-    position: absolute;
-    inset: 0;
-    padding: 24px 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    pointer-events: none; /* las hijas sí tendrán pointer-events */
-}
-
-/* truco: dos columnas, arriba y abajo */
-.hero-cover__corners::before {
-    content: "";
-    position: absolute;
-    inset: 50% 0 auto;
-}
-
-/* Links esquina */
-.corner-link {
-    position: absolute;
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #f5f5f5;
-    pointer-events: auto;
-    text-decoration: none;
-}
-
-.corner-link--tl { top: 24px; left: 28px; }
-.corner-link--tr { top: 24px; right: 28px; }
-.corner-link--bl { bottom: 28px; left: 28px; }
-.corner-link--br { bottom: 28px; right: 28px; }
-
-.corner-link:hover {
-    text-decoration: underline;
-}
-
-/* Bloque central editorial */
-.hero-cover__center {
-    max-width: 720px;
-    text-align: left;
-    color: #f8f3ec;
-}
-
-.hero-cover__eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    opacity: 0.85;
-}
-
-.hero-cover__title {
-    font-family: "Playfair Display", "Times New Roman", serif;
-    font-weight: 600;
-    font-size: clamp(42px, 6vw, 60px);
-    line-height: 1.05;
-    margin: 0 0 12px;
-}
-
-.hero-cover__title span {
-    display: block;
-    font-weight: 500;
-}
-
-.hero-cover__subtitle {
-    max-width: 460px;
-    font-size: 15px;
-    line-height: 1.5;
-    margin: 0;
-    opacity: 0.9;
-}
-
-/* Indicador scroll */
-.hero-cover__scroll {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(248, 243, 236, 0.78);
-}
-
-.hero-cover__scroll-line {
-    width: 1px;
-    height: 32px;
-    background-color: rgba(248, 243, 236, 0.75);
-}
-
-/* Responsive portada editorial */
-@media (max-width: 720px) {
-    .hero--cover {
-        padding: 24px 18px;
-    }
-
-    .corner-link--tl { top: 18px; left: 18px; }
-    .corner-link--tr { top: 18px; right: 18px; }
-    .corner-link--bl { bottom: 18px; left: 18px; display:none; } /* si quieres limpiar en móvil */
-    .corner-link--br { bottom: 18px; right: 18px; }
-
-    .hero-cover__center {
-        text-align: left;
-    }
-
-    .hero-cover__title {
-        font-size: clamp(32px, 8vw, 44px);
-    }
-
-    .hero-cover__subtitle {
-        max-width: none;
-    }
-
-    .hero-cover__scroll {
-        bottom: 18px;
-    }
-}
+   

@@ -1,356 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Madrid · Visitas imprescindibles</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madrid · Visitas</title>
+  <meta name="description" content="Visitas imprescindibles en Madrid: museos, parques, plazas y miradores." />
 
-    <meta name="description" content="Selección de visitas imprescindibles en Madrid: museos, parques, plazas y miradores organizados por tipo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="theme-light">
 
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="header-inner container">
-            <a href="index.html" class="site-logo">
-                <span class="site-logo__mark">M</span>
-                <span class="site-logo__text">Madrid</span>
-            </a>
+<body class="theme-light has-header">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="index.html">
+        <span class="site-logo__mark">M</span>
+        <span class="site-logo__text">Madrid</span>
+      </a>
 
-            <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
-                <span class="burger__line"></span>
-                <span class="burger__line"></span>
-                <span class="burger__line"></span>
-            </button>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </button>
 
-            <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
-                <ul class="main-nav__list">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="visitas.html" class="is-current">Visitas</a></li>
-                    <li><a href="clima.html">Clima</a></li>
-                </ul>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a class="is-current" href="visitas.html">Visitas</a></li>
+          <li><a href="clima.html">Clima</a></li>
+        </ul>
 
-                <button class="theme-toggle" type="button" aria-label="Cambiar tema">
-                    <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
-                    <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
-                </button>
-            </nav>
+        <button class="theme-toggle" type="button" aria-label="Cambiar tema">
+          <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero--subpage">
+      <div class="container hero__content">
+        <p class="hero__eyebrow">Visitas</p>
+        <h1 class="hero__title">Qué ver en Madrid</h1>
+        <p class="hero__subtitle">Museos, parques, plazas y miradores. Filtra por tipo.</p>
+      </div>
+    </section>
+
+    <section class="section section--filters">
+      <div class="container">
+        <div class="visits-filters">
+          <button class="visits-filter is-active" type="button" data-filter="all">Todas</button>
+          <button class="visits-filter" type="button" data-filter="arte">Arte</button>
+          <button class="visits-filter" type="button" data-filter="parque">Parques</button>
+          <button class="visits-filter" type="button" data-filter="plaza">Plazas</button>
+          <button class="visits-filter" type="button" data-filter="vistas">Vistas</button>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <section class="section section--parallax-carousel">
-        <div class="section__inner container">
-          <header class="section__header">
-            <h2 class="section__title">Explora barrios de Madrid</h2>
-            <p class="section__intro">
-              Desplázate horizontalmente y fíjate cómo cambia el foco del carrusel.
-            </p>
-          </header>
-      
-          <div class="parallax-carousel" id="parallax-carousel">
-            <div class="parallax-track">
-      
-              <article class="parallax-item">
-                <h3>Malasaña</h3>
-                <p>Cafés, bares y tiendas independientes.</p>
-              </article>
-      
-              <article class="parallax-item">
-                <h3>La Latina</h3>
-                <p>Tapas, plazas y domingos de Rastro.</p>
-              </article>
-      
-              <article class="parallax-item">
-                <h3>Retiro / Prado</h3>
-                <p>Parque y museos en el mismo eje.</p>
-              </article>
-      
-              <article class="parallax-item">
-                <h3>Salamanca</h3>
-                <p>Compras y arquitectura elegante.</p>
-              </article>
-      
-              <article class="parallax-item">
-                <h3>Lavapiés</h3>
-                <p>Mezcla de culturas y arte urbano.</p>
-              </article>
-      
+    <section class="section">
+      <div class="container">
+        <div class="visits-grid">
+
+          <article class="visit-card" data-category="arte">
+            <div class="visit-card__media"></div>
+            <div class="visit-card__body">
+              <h3 class="visit-card__title">Museo del Prado</h3>
+              <p class="visit-card__meta">Arte · Retiro / Prado</p>
+              <p class="visit-card__text">Obras clave de Velázquez, Goya o El Bosco.</p>
             </div>
-          </div>
+          </article>
+
+          <article class="visit-card" data-category="parque">
+            <div class="visit-card__media"></div>
+            <div class="visit-card__body">
+              <h3 class="visit-card__title">Parque del Retiro</h3>
+              <p class="visit-card__meta">Parque · Retiro</p>
+              <p class="visit-card__text">Paseo, estanque y Palacio de Cristal.</p>
+            </div>
+          </article>
+
+          <article class="visit-card" data-category="plaza">
+            <div class="visit-card__media"></div>
+            <div class="visit-card__body">
+              <h3 class="visit-card__title">Plaza Mayor</h3>
+              <p class="visit-card__meta">Plaza · Centro</p>
+              <p class="visit-card__text">Casco histórico y soportales clásicos.</p>
+            </div>
+          </article>
+
+          <article class="visit-card" data-category="vistas">
+            <div class="visit-card__media"></div>
+            <div class="visit-card__body">
+              <h3 class="visit-card__title">Templo de Debod</h3>
+              <p class="visit-card__meta">Vistas · Parque del Oeste</p>
+              <p class="visit-card__text">Atardecer con vistas abiertas.</p>
+            </div>
+          </article>
+
         </div>
-      </section>
-      
+      </div>
+    </section>
+  </main>
 
-    <main>
+  <!-- jQuery (CDN profe) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <!-- HERO VISITAS -->
-        <section class="hero hero--subpage">
-            <div class="hero__inner container">
-                <div class="hero__content">
-                    <p class="hero__eyebrow">Visitas</p>
-                    <h1 class="hero__title">Qué ver en Madrid en tu primera visita.</h1>
-                    <p class="hero__subtitle">
-                        Una selección de sitios clave organizada por tipo de experiencia:
-                        arte, parques, plazas y vistas panorámicas.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FILTROS -->
-        <section class="section section--filters">
-            <div class="section__inner container">
-                <header class="section__header">
-                    <h2 class="section__title">Filtrar visitas por tipo</h2>
-                    <p class="section__intro">
-                        Usa los filtros para centrarte en lo que más te interesa. Puedes
-                        combinar varios tipos en un mismo día.
-                    </p>
-                </header>
-
-                <div class="visits-filters" role="tablist" aria-label="Filtrar visitas por categoría">
-                    <button class="visits-filter is-active" type="button" data-filter="all">
-                        Todas
-                    </button>
-                    <button class="visits-filter" type="button" data-filter="arte">
-                        Arte y museos
-                    </button>
-                    <button class="visits-filter" type="button" data-filter="parque">
-                        Parques
-                    </button>
-                    <button class="visits-filter" type="button" data-filter="plaza">
-                        Plazas y casco histórico
-                    </button>
-                    <button class="visits-filter" type="button" data-filter="vistas">
-                        Vistas y atardeceres
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- GRID DE VISITAS -->
-        <section class="section section--visits">
-            <div class="section__inner container">
-                <div class="visits-grid">
-
-                    <!-- CARD: MUSEO DEL PRADO -->
-                    <article class="visit-card" data-category="arte" data-district="retiro">
-                        <div class="visit-card__media">
-                            <!-- Imagen / placeholder, lo resuelves luego en CSS -->
-                            <div class="visit-card__placeholder">Museo del Prado</div>
-                        </div>
-                        <div class="visit-card__body">
-                            <header class="visit-card__header">
-                                <h3 class="visit-card__title">Museo del Prado</h3>
-                                <p class="visit-card__meta">Arte · Barrio Retiro / Prado</p>
-                            </header>
-                            <p class="visit-card__text">
-                                Uno de los museos más importantes del mundo, con obras de Velázquez,
-                                Goya o El Bosco. Recomendable reservar al menos 2–3 horas.
-                            </p>
-                            <ul class="visit-card__tags">
-                                <li>#arte</li>
-                                <li>#museos</li>
-                            </ul>
-                            <div class="visit-card__actions">
-                                <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">
-                                    Ver en mapa
-                                </a>
-                                <button class="visit-card__more" type="button" data-visit="prado">
-                                    Más detalles
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- CARD: PALACIO REAL -->
-                    <article class="visit-card" data-category="plaza" data-district="centro">
-                        <div class="visit-card__media">
-                            <div class="visit-card__placeholder">Palacio Real</div>
-                        </div>
-                        <div class="visit-card__body">
-                            <header class="visit-card__header">
-                                <h3 class="visit-card__title">Palacio Real y alrededores</h3>
-                                <p class="visit-card__meta">Historia · Centro</p>
-                            </header>
-                            <p class="visit-card__text">
-                                Residencia oficial de la Familia Real, rodeado de plazas, jardines
-                                y miradores. Zona ideal para combinar con la Catedral de la Almudena.
-                            </p>
-                            <ul class="visit-card__tags">
-                                <li>#historia</li>
-                                <li>#arquitectura</li>
-                            </ul>
-                            <div class="visit-card__actions">
-                                <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">
-                                    Ver en mapa
-                                </a>
-                                <button class="visit-card__more" type="button" data-visit="palacio-real">
-                                    Más detalles
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- CARD: PARQUE DEL RETIRO -->
-                    <article class="visit-card" data-category="parque" data-district="retiro">
-                        <div class="visit-card__media">
-                            <div class="visit-card__placeholder">Parque del Retiro</div>
-                        </div>
-                        <div class="visit-card__body">
-                            <header class="visit-card__header">
-                                <h3 class="visit-card__title">Parque del Retiro</h3>
-                                <p class="visit-card__meta">Parque · Barrio Retiro</p>
-                            </header>
-                            <p class="visit-card__text">
-                                El pulmón verde del centro de Madrid, perfecto para pasear, remar en
-                                el Estanque Grande o visitar el Palacio de Cristal.
-                            </p>
-                            <ul class="visit-card__tags">
-                                <li>#parques</li>
-                                <li>#paseos</li>
-                            </ul>
-                            <div class="visit-card__actions">
-                                <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">
-                                    Ver en mapa
-                                </a>
-                                <button class="visit-card__more" type="button" data-visit="retiro">
-                                    Más detalles
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- CARD: GRAN VÍA -->
-                    <article class="visit-card" data-category="plaza" data-district="centro">
-                        <div class="visit-card__media">
-                            <div class="visit-card__placeholder">Gran Vía</div>
-                        </div>
-                        <div class="visit-card__body">
-                            <header class="visit-card__header">
-                                <h3 class="visit-card__title">Gran Vía</h3>
-                                <p class="visit-card__meta">Compras y ocio · Centro</p>
-                            </header>
-                            <p class="visit-card__text">
-                                Una de las arterias principales de Madrid, llena de cines, teatros,
-                                tiendas y edificios icónicos como el Carrión.
-                            </p>
-                            <ul class="visit-card__tags">
-                                <li>#compras</li>
-                                <li>#teatros</li>
-                            </ul>
-                            <div class="visit-card__actions">
-                                <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">
-                                    Ver en mapa
-                                </a>
-                                <button class="visit-card__more" type="button" data-visit="gran-via">
-                                    Más detalles
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- CARD: PLAZA MAYOR -->
-                    <article class="visit-card" data-category="plaza" data-district="centro">
-                        <div class="visit-card__media">
-                            <div class="visit-card__placeholder">Plaza Mayor</div>
-                        </div>
-                        <div class="visit-card__body">
-                            <header class="visit-card__header">
-                                <h3 class="visit-card__title">Plaza Mayor</h3>
-                                <p class="visit-card__meta">Plaza · Centro histórico</p>
-                            </header>
-                            <p class="visit-card__text">
-                                Una de las plazas más reconocibles de la ciudad, rodeada de soportales
-                                y muy cerca del Mercado de San Miguel.
-                            </p>
-                            <ul class="visit-card__tags">
-                                <li>#cascohistorico</li>
-                                <li>#plazas</li>
-                            </ul>
-                            <div class="visit-card__actions">
-                                <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">
-                                    Ver en mapa
-                                </a>
-                                <button class="visit-card__more" type="button" data-visit="plaza-mayor">
-                                    Más detalles
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- CARD: TEMPLO DE DEBOD -->
-                    <article class="visit-card" data-category="vistas" data-district="arguelles">
-                        <div class="visit-card__media">
-                            <div class="visit-card__placeholder">Templo de Debod</div>
-                        </div>
-                        <div class="visit-card__body">
-                            <header class="visit-card__header">
-                                <h3 class="visit-card__title">Templo de Debod</h3>
-                                <p class="visit-card__meta">Vistas · Parque del Oeste</p>
-                            </header>
-                            <p class="visit-card__text">
-                                Un templo egipcio en pleno Madrid y uno de los atardeceres más
-                                conocidos de la ciudad, con vistas hacia la Casa de Campo.
-                            </p>
-                            <ul class="visit-card__tags">
-                                <li>#vistas</li>
-                                <li>#atardeceres</li>
-                            </ul>
-                            <div class="visit-card__actions">
-                                <a href="https://maps.app.goo.gl/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">
-                                    Ver en mapa
-                                </a>
-                                <button class="visit-card__more" type="button" data-visit="debod">
-                                    Más detalles
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- MODAL DETALLES VISITA (rellenarás con JS/jQuery) -->
-        <div class="visit-modal" id="visit-modal" aria-hidden="true">
-            <div class="visit-modal__overlay"></div>
-            <div class="visit-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="visit-modal-title">
-                <button class="visit-modal__close" type="button" aria-label="Cerrar">
-                    ×
-                </button>
-                <div class="visit-modal__content">
-                    <h2 class="visit-modal__title" id="visit-modal-title">Título de la visita</h2>
-                    <p class="visit-modal__text">
-                        Aquí se cargará la información ampliada de la visita seleccionada.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="site-footer__inner container">
-            <p class="site-footer__text">
-                Guía de Madrid · Proyecto académico de Diseño Web Avanzado.
-            </p>
-            <a href="https://github.com/tu-usuario/tu-repo-madrid" class="site-footer__link" target="_blank" rel="noopener">
-                Ver código en GitHub
-            </a>
-        </div>
-    </footer>
-
-    
-   <!-- jQuery oficial  -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-   integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-   <!-- script general -->
-   <script src="js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,203 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Madrid · Clima y mejor época para viajar</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madrid · Clima</title>
+  <meta name="description" content="Clima de Madrid: temperaturas mensuales, lluvia y mejor época para viajar." />
 
-    <meta name="description" content="Clima de Madrid mes a mes: temperaturas medias, días de lluvia y recomendaciones para elegir la mejor época para viajar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="theme-light">
 
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="header-inner container">
-            <a href="index.html" class="site-logo">
-                <span class="site-logo__mark">M</span>
-                <span class="site-logo__text">Madrid</span>
-            </a>
+<body class="theme-light has-header">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="index.html">
+        <span class="site-logo__mark">M</span>
+        <span class="site-logo__text">Madrid</span>
+      </a>
 
-            <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
-                <span class="burger__line"></span>
-                <span class="burger__line"></span>
-                <span class="burger__line"></span>
-            </button>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </button>
 
-            <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
-                <ul class="main-nav__list">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="visitas.html">Visitas</a></li>
-                    <li><a href="clima.html" class="is-current">Clima</a></li>
-                </ul>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <ul class="main-nav__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="visitas.html">Visitas</a></li>
+          <li><a class="is-current" href="clima.html">Clima</a></li>
+        </ul>
 
-                <button class="theme-toggle" type="button" aria-label="Cambiar tema">
-                    <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
-                    <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
-                </button>
-            </nav>
+        <button class="theme-toggle" type="button" aria-label="Cambiar tema">
+          <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero--subpage">
+      <div class="container hero__content">
+        <p class="hero__eyebrow">Clima</p>
+        <h1 class="hero__title">Madrid mes a mes</h1>
+        <p class="hero__subtitle">Temperatura media y recomendaciones rápidas.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container climate-layout">
+
+        <div class="climate-card">
+          <h2 class="climate-card__title">Temperatura media</h2>
+          <p class="climate-card__text">Gráfico de línea basado en Chart.js.</p>
+
+          <div class="climate-chart">
+            <canvas id="climateChart"></canvas>
+          </div>
+
+          <div class="climate-units">
+            <span class="climate-units__label">Unidad</span>
+            <button class="climate-units__btn is-active" type="button" data-unit="c">ºC</button>
+            <button class="climate-units__btn" type="button" data-unit="f">ºF</button>
+          </div>
         </div>
-    </header>
 
-    <main>
+        <aside class="climate-side">
+          <div class="mini-panel">
+            <h3>Mejor época</h3>
+            <p>Primavera y otoño: clima suave y ciudad caminable.</p>
+          </div>
+          <div class="mini-panel">
+            <h3>Verano</h3>
+            <p>Mucho calor a mediodía: mejor mañanas y noches.</p>
+          </div>
+          <div class="mini-panel">
+            <h3>Invierno</h3>
+            <p>Frío moderado pero con bastantes días de sol.</p>
+          </div>
+        </aside>
 
-        <!-- HERO CLIMA -->
-        <section class="hero hero--subpage">
-            <div class="hero__inner container">
-                <div class="hero__content">
-                    <p class="hero__eyebrow">Clima</p>
-                    <h1 class="hero__title">Clima de Madrid a lo largo del año.</h1>
-                    <p class="hero__subtitle">
-                        Consulta temperaturas medias y días de lluvia para decidir
-                        cuándo te resulta más cómodo visitar la ciudad.
-                    </p>
-                </div>
-            </div>
-        </section>
+      </div>
+    </section>
+  </main>
 
-        <!-- GRÁFICO PRINCIPAL -->
-        <section class="section section--climate-chart">
-            <div class="section__inner container">
-                <header class="section__header section__header--climate">
-                    <div>
-                        <h2 class="section__title">Temperaturas medias mensuales</h2>
-                        <p class="section__intro">
-                            Valores aproximados que te ayudan a entender el tipo de clima de la ciudad:
-                            inviernos suaves, veranos calurosos y primaveras y otoños agradables.
-                        </p>
-                    </div>
-
-                    <div class="climate-units">
-                        <span class="climate-units__label">Unidad</span>
-                        <button class="climate-units__btn is-active" type="button" data-unit="c">
-                            ºC
-                        </button>
-                        <button class="climate-units__btn" type="button" data-unit="f">
-                            ºF
-                        </button>
-                    </div>
-                </header>
-
-                <div class="climate-chart__wrapper">
-                    <canvas id="climateChart" aria-label="Gráfico de temperaturas medias mensuales de Madrid" role="img"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <!-- TABS DE INFORMACIÓN -->
-        <section class="section section--climate-info">
-            <div class="section__inner container">
-                <div class="climate-tabs" role="tablist" aria-label="Información práctica sobre el clima de Madrid">
-                    <button class="climate-tab is-active" type="button" data-tab="clima">
-                        Clima
-                    </button>
-                    <button class="climate-tab" type="button" data-tab="cuando">
-                        Cuándo venir
-                    </button>
-                    <button class="climate-tab" type="button" data-tab="maleta">
-                        Qué meter en la maleta
-                    </button>
-                </div>
-
-                <div class="climate-panels">
-                    <!-- PANEL: CLIMA -->
-                    <article class="climate-panel is-active" id="panel-clima" data-tab-target="clima">
-                        <h2 class="climate-panel__title">Cómo es el clima en Madrid</h2>
-                        <p class="climate-panel__text">
-                            Madrid tiene un clima mediterráneo continentalizado: los inviernos son
-                            generalmente fríos pero con bastantes días de sol, y los veranos son
-                            calurosos y secos, especialmente en julio y agosto.
-                        </p>
-                        <p class="climate-panel__text">
-                            La lluvia se concentra principalmente en otoño y primavera, por lo que la
-                            mayoría de los días podrás moverte a pie sin problema.
-                        </p>
-                    </article>
-
-                    <!-- PANEL: CUÁNDO VENIR -->
-                    <article class="climate-panel" id="panel-cuando" data-tab-target="cuando">
-                        <h2 class="climate-panel__title">Mejor época para visitar Madrid</h2>
-                        <ul class="climate-panel__list">
-                            <li>
-                                <strong>Primavera (marzo–mayo):</strong>
-                                temperaturas suaves y parques en su mejor momento, ideal para pasear.
-                            </li>
-                            <li>
-                                <strong>Otoño (septiembre–noviembre):</strong>
-                                clima agradable y menos calor; buena época para combinar museos y terrazas.
-                            </li>
-                            <li>
-                                <strong>Verano (junio–agosto):</strong>
-                                días largos y ambiente nocturno muy activo, aunque con calor intenso en las horas centrales.
-                            </li>
-                            <li>
-                                <strong>Invierno (diciembre–febrero):</strong>
-                                frío moderado y bastantes días despejados; buena opción si prefieres menos turismo.
-                            </li>
-                        </ul>
-                    </article>
-
-                    <!-- PANEL: MALETA -->
-                    <article class="climate-panel" id="panel-maleta" data-tab-target="maleta">
-                        <h2 class="climate-panel__title">Qué llevar en la maleta</h2>
-                        <div class="climate-panel__columns">
-                            <div>
-                                <h3>Primavera y otoño</h3>
-                                <ul>
-                                    <li>Capa ligera (cazadora o sudadera).</li>
-                                    <li>Zapatillas cómodas para caminar.</li>
-                                    <li>Paraguas plegable por si hay lluvia puntual.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3>Verano</h3>
-                                <ul>
-                                    <li>Ropa fresca y transpirable.</li>
-                                    <li>Gorra o sombrero y gafas de sol.</li>
-                                    <li>Protector solar, sobre todo si vas a pasar tiempo al aire libre.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3>Invierno</h3>
-                                <ul>
-                                    <li>Abrigo, bufanda y algo de ropa térmica si eres friolero.</li>
-                                    <li>Zapatillas o botas cómodas, aptas para lluvia ligera.</li>
-                                    <li>Capa extra para las noches, cuando baja más la temperatura.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="site-footer__inner container">
-            <p class="site-footer__text">
-                Guía de Madrid · Proyecto académico de Diseño Web Avanzado.
-            </p>
-            <a href="https://github.com/tu-usuario/tu-repo-madrid" class="site-footer__link" target="_blank" rel="noopener">
-                Ver código en GitHub
-            </a>
-        </div>
-    </footer>
-
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  <!-- jQuery (CDN profe) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- JS principal -->
-    <script src="js/jquery-3.6.1.min.js"></script>
-    <script src="js/Chart.min.js"></script>
-    <script src="js/script.js"></script>
-
+  <script src="js/script.js"></script>
 </body>
 </html>

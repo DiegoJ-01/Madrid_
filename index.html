@@ -1,92 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Madrid · City Guide</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madrid · City Guide</title>
+  <meta name="description" content="Portada editorial de la guía de Madrid: barrios, visitas y clima." />
 
-    <meta name="description" content="Portada editorial de la guía de Madrid: barrios, visitas y clima para preparar tu viaje." />
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Tipos: sans + serif editorial -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Sans para cuerpo + serif para titular editorial -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="theme-light">
 
+<body class="theme-light no-header">
+  <main>
 
+    <section class="cover" aria-label="Portada editorial de Madrid">
+      <!-- Cambia la ruta de la imagen -->
+      <div class="cover__bg" aria-hidden="true"></div>
 
-    <main>
+      <!-- Links en esquinas -->
+      <a class="corner corner--tl" href="index.html">Madrid · Spain</a>
+      <a class="corner corner--tr" href="visitas.html">Visitas</a>
+      <a class="corner corner--bl" href="#intro">Sobre la ciudad</a>
+      <a class="corner corner--br" href="clima.html">Clima</a>
 
-        <!-- PORTADA EDITORIAL -->
-        <section class="hero hero--cover" aria-label="Portada editorial de Madrid">
-            <!-- Esto es la imagen / textura de fondo tipo DeGraw & DeHaan -->
-            <div class="hero-cover__bg" aria-hidden="true"></div>
+      <!-- Centro editorial -->
+      <div class="cover__center">
+        <p class="cover__eyebrow">City guide</p>
+        <h1 class="cover__title">Madrid,<span>luz todo el año.</span></h1>
+        <p class="cover__subtitle">
+          Una mirada calmada a los barrios, plazas y parques de la ciudad, pensada para tu primera visita.
+        </p>
+      </div>
 
-            <!-- Botones en las esquinas, estilo editorial tipo Studio Lyon Szot -->
-            <div class="hero-cover__corners">
-                <a href="index.html" class="corner-link corner-link--tl">
-                    Madrid · Spain
-                </a>
-                <a href="visitas.html" class="corner-link corner-link--tr">
-                    Visitas
-                </a>
-                <a href="#intro" class="corner-link corner-link--bl">
-                    Sobre la ciudad
-                </a>
-                <a href="clima.html" class="corner-link corner-link--br">
-                    Clima
-                </a>
-            </div>
+      <!-- Scroll hint -->
+      <div class="cover__scroll" aria-hidden="true">
+        <span class="cover__line"></span>
+        <span class="cover__scroll-text">Desliza para empezar</span>
+      </div>
+    </section>
 
-            <!-- Bloque central, tipo editorial -->
-            <div class="hero-cover__center">
-                <p class="hero-cover__eyebrow">City guide</p>
-                <h1 class="hero-cover__title">
-                    Madrid,
-                    <span>luz todo el año.</span>
-                </h1>
-                <p class="hero-cover__subtitle">
-                    Una mirada calmada a los barrios, plazas y parques de la ciudad,
-                    pensada para tu primera visita.
-                </p>
-            </div>
+    <section class="section" id="intro">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Una ciudad para vivirla caminando</h2>
+          <p class="section__intro">
+            Esta guía resume lo básico para orientarte en Madrid: barrios, visitas imprescindibles y clima.
+          </p>
+        </header>
 
-            <!-- Pequeño scroll hint abajo -->
-            <div class="hero-cover__scroll">
-                <span class="hero-cover__scroll-line"></span>
-                <span class="hero-cover__scroll-text">Desliza para empezar</span>
-            </div>
-        </section>
+        <div class="cta-grid">
+          <a class="cta-card" href="visitas.html">
+            <h3>Visitas</h3>
+            <p>Barrios, museos, parques y rutas recomendadas.</p>
+            <span class="cta-card__link">Explorar</span>
+          </a>
 
-        <!-- BLOQUE INTRO 
-        <section class="section section--intro" id="intro">
-            <div class="section__inner container">
-                <header class="section__header">
-                    <h2 class="section__title">Una ciudad para vivirla caminando</h2>
-                    <p class="section__intro">
-                        Esta guía resume lo básico para orientarte en Madrid: qué barrios
-                        deberías conocer, qué visitas encajan mejor en pocos días y cómo
-                        es el clima a lo largo del año.
-                    </p>
-                </header>
-            </div>
-        </section> -->
+          <a class="cta-card" href="clima.html">
+            <h3>Clima</h3>
+            <p>Temperaturas mensuales y mejor época para venir.</p>
+            <span class="cta-card__link">Ver clima</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-        <!-- Aquí luego engancharás secciones o directamente enlazas a Visitas / Clima -->
-    </main>
-    
-    <!-- jQuery + script -->
-    <!-- jQuery oficial  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  </main>
+
+  <!-- jQuery (CDN profe) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- script general -->
-    <script src="js/script.js"></script>
-
+  <script src="js/script.js"></script>
 </body>
 </html>
