@@ -48,42 +48,123 @@ function initTheme() {
             "aria-label",
             isDark ? "Cambiar a tema claro" : "Cambiar a tema oscuro"
         );
-    });
-}
 
 
 /* ----------------------------------------------
    3) Filtros de visitas (Visitas.html)
    ---------------------------------------------- */
-function initVisitsFilters() {
-    var $filters = $(".visits-filter"); // botones de filtro
-    var $cards   = $(".visit-card");    // tarjetas con data-category
-
-    if ($filters.length === 0 || $cards.length === 0) return;
-
-    $filters.on("click", function () {
-        var filter = $(this).data("filter"); // "all", "arte", "parque", etc.
-
-        // Visualmente marcamos qué botón está activo
-        $filters.removeClass("is-active");
-        $(this).addClass("is-active");
-
-        if (filter === "all") {
-            // Mostrar todas las cards
-            $cards.fadeIn(200);
-        } else {
-            // Mostrar solo las que coinciden con el data-category
-            $cards.each(function () {
-                var category = $(this).data("category");
-                if (category === filter) {
-                    $(this).fadeIn(200);
-                } else {
-                    $(this).fadeOut(200);
-                }
-            });
-        }
+   function initVisitsSections() {
+    var $tabs = $(".visits-filter");
+    var $sections = $(".visits-section");
+  
+    if ($tabs.length === 0 || $sections.length === 0) return;
+  
+    $tabs.on("click", function () {
+      var target = $(this).data("section");
+  
+      $tabs.removeClass("is-active");
+      $(this).addClass("is-active");
+  
+      $sections.removeClass("is-active");
+      $sections.filter('[data-section="' + target + '"]').addClass("is-active");
     });
+  }
+  
+  function initDeckNavigation() {
+    $(".visits-section").each(function () {
+      var $section = $(this);
+      var deckKey = $section.data("section");
+      var $deck = $section.find('.visit-deck[data-deck="' + deckKey + '"]');
+      var $cards = $deck.find(".visit-cardx");
+  
+      if ($deck.length === 0 || $cards.length === 0) return;
+  
+      var idx = 0;
+      var total = $cards.length;
+  
+      $section.find(".total").text(total);
+      $section.find(".current").text(idx + 1);
+  
+      function showCard(i) {
+        idx = (i + total) % total;
+        $cards.removeClass("is-active");
+        $cards.eq(idx).addClass("is-active");
+        $section.find(".current").text(idx + 1);
+      }
+  
+      // botones de la sección
+      $section.find(".nav-prev").on("click", function () { showCard(idx - 1); });
+      $section.find(".nav-next").on("click", function () { showCard(idx + 1); });
+    });
+  }
+  
+  function initClassCarousels() {
+    $("[data-carousel]").each(function () {
+      var $car = $(this);
+      var $track = $car.find(".car-track");
+      var $slides = $track.find("img");
+      var total = $slides.length;
+      var idx = 0;
+  
+      function go(i) {
+        idx = (i + total) % total;
+        $track.css("transform", "translateX(" + (-idx * 100) + "%)");
+      }
+  
+      $car.find(".car-prev").on("click", function () { go(idx - 1); });
+      $car.find(".car-next").on("click", function () { go(idx + 1); });
+  
+      go(0);
+    });
+  }
+  
+  /* Llamadas */
+  $(document).ready(function () {
+    initMenu();
+    initTheme();
+  
+    initVisitsSections();   // tabs Arte/Paseos/Gastro
+    initDeckNavigation();   // 1 card a la vez
+    initClassCarousels();   // carrusel simple
+  });
+  
+
+    // botones de la sección
+    $section.find(".nav-prev").on("click", function () { showCard(idx - 1); });
+    $section.find(".nav-next").on("click", function () { showCard(idx + 1); });
+  });
 }
+
+function initClassCarousels() {
+  $("[data-carousel]").each(function () {
+    var $car = $(this);
+    var $track = $car.find(".car-track");
+    var $slides = $track.find("img");
+    var total = $slides.length;
+    var idx = 0;
+
+    function go(i) {
+      idx = (i + total) % total;
+      $track.css("transform", "translateX(" + (-idx * 100) + "%)");
+    }
+
+    $car.find(".car-prev").on("click", function () { go(idx - 1); });
+    $car.find(".car-next").on("click", function () { go(idx + 1); });
+
+    go(0);
+  });
+}
+
+/* Llamadas */
+$(document).ready(function () {
+  initMenu();
+  initTheme();
+
+  initVisitsSections();   // tabs Arte/Paseos/Gastro
+  initDeckNavigation();   // 1 card a la vez
+  initClassCarousels();   // carrusel simple
+});
+
 
 
 /* ----------------------------------------------
@@ -290,4 +371,79 @@ $(document).ready(function () {
     initVisitsModal();
     initClimateTabs();
     initClimateChart();
+    initLockedCarousels();
 });
+function initLockedCarousels() {
+    var $carousels = $(".locked-carousel");
+    if ($carousels.length === 0) return;
+  
+    function setSlide($c, idx) {
+      var steps = parseInt($c.attr("data-steps") || "3", 10);
+      idx = Math.max(0, Math.min(steps - 1, idx));
+  
+      $c.data("idx", idx);
+  
+      var $track = $c.find(".locked-track");
+      $track.css("transform", "translateX(" + (-idx * 100) + "%)");
+  
+      $c.find(".locked-progress").text((idx + 1) + " / " + steps);
+  
+      // marcar completado al llegar al último
+      if (idx === steps - 1) {
+        $c.data("done", true);
+      }
+    }
+  
+    function isInViewport($el) {
+      var r = $el[0].getBoundingClientRect();
+      return r.top < window.innerHeight * 0.45 && r.bottom > window.innerHeight * 0.55;
+    }
+  
+    // init
+    $carousels.each(function () {
+      var $c = $(this);
+      $c.data("idx", 0);
+      $c.data("done", false);
+      setSlide($c, 0);
+    });
+  
+    // botones
+    $(document).on("click", ".locked-next", function () {
+      var $c = $(this).closest(".locked-carousel");
+      setSlide($c, ($c.data("idx") || 0) + 1);
+    });
+  
+    $(document).on("click", ".locked-prev", function () {
+      var $c = $(this).closest(".locked-carousel");
+      setSlide($c, ($c.data("idx") || 0) - 1);
+      $c.data("done", false); // si vuelves atrás, se “descompleta”
+    });
+  
+    // BLOQUEO de rueda/trackpad mientras el carrusel no esté completado
+    window.addEventListener("wheel", function (e) {
+      // busca el carrusel "activo" (centrado)
+      var active = null;
+      $carousels.each(function () {
+        var $c = $(this);
+        if (!$c.data("done") && isInViewport($c)) active = $c;
+      });
+  
+      if (!active) return;
+  
+      // bloquea scroll de página
+      e.preventDefault();
+  
+      var delta = e.deltaY;
+      var idx = active.data("idx") || 0;
+      var steps = parseInt(active.attr("data-steps") || "3", 10);
+  
+      if (delta > 0 && idx < steps - 1) {
+        setSlide(active, idx + 1);
+      } else if (delta < 0 && idx > 0) {
+        setSlide(active, idx - 1);
+        active.data("done", false);
+      }
+      // si ya está en el último, no bloquea más (porque active.data("done") será true)
+    }, { passive: false });
+  }
+  
