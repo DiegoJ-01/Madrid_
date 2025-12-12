@@ -1,253 +1,318 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Madrid · Visitas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-<main>
+
+<body class="theme-light">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">
+        <span class="site-logo__mark">M</span>
+        <span class="site-logo__text">Madrid</span>
+      </a>
+
+      <nav class="main-nav">
+        <ul class="main-nav__list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="visitas.html" class="is-current">Visitas</a></li>
+          <li><a href="clima.html">Clima</a></li>
+        </ul>
+      </nav>
+
+      <button class="burger" aria-label="Menú">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </button>
+
+      <button class="theme-toggle" aria-label="Cambiar tema">
+        <span class="theme-toggle__icon theme-toggle__icon--light">☀</span>
+        <span class="theme-toggle__icon theme-toggle__icon--dark">●</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
 
     <!-- HERO -->
     <section class="hero hero--subpage">
       <div class="container">
         <p class="hero__eyebrow">Visitas</p>
         <h1 class="hero__title">Madrid, sin prisa</h1>
-        <p class="hero__subtitle">Tres rutas simples para decidirte antes de viajar: arte, paseos y gastronomía.</p>
+        <p class="hero__subtitle">
+          Tres formas sencillas de entender la ciudad antes de viajar.
+        </p>
       </div>
     </section>
-  
-    <!-- FILTROS (cambian de sección, no filtran mil cards) -->
+
+    <!-- FILTROS -->
     <section class="section section--filters visits-top">
       <div class="container">
         <div class="visits-filters">
-          <button class="visits-filter is-active" type="button" data-section="arte">Arte</button>
-          <button class="visits-filter" type="button" data-section="paseos">Paseos</button>
-          <button class="visits-filter" type="button" data-section="gastro">Gastronomía</button>
+          <button class="visits-filter is-active" data-section="arte">Arte</button>
+          <button class="visits-filter" data-section="paseos">Paseos</button>
+          <button class="visits-filter" data-section="gastro">Gastronomía</button>
         </div>
       </div>
     </section>
-  
-    <!-- =========================
+
+    <!-- ======================
          ARTE
-         ========================= -->
-    <section class="visits-section is-active" id="arte" data-section="arte">
+         ====================== -->
+    <section class="visits-section is-active" data-section="arte">
       <div class="container">
-  
+
         <header class="visits-section__head">
-          <h2 class="visits-section__title">Arte</h2>
-          <p class="visits-section__intro">Un día perfecto de museos y edificios emblemáticos.</p>
-  
+          <div>
+            <h2 class="visits-section__title">Arte</h2>
+            <p class="visits-section__intro">
+              Museos imprescindibles para una primera visita.
+            </p>
+          </div>
+
           <div class="visits-nav">
-            <button class="nav-btn nav-prev" type="button">← Anterior</button>
-            <span class="nav-count"><span class="current">1</span>/<span class="total">2</span></span>
-            <button class="nav-btn nav-next" type="button">Siguiente →</button>
+            <button class="nav-btn nav-prev">← Anterior</button>
+            <span class="nav-count"><span class="current">1</span>/<span class="total">3</span></span>
+            <button class="nav-btn nav-next">Siguiente →</button>
           </div>
         </header>
-  
+
         <div class="visit-deck" data-deck="arte">
-          <!-- CARD 1 -->
-          <article class="visit-cardx is-active" data-category="arte">
+
+          <!-- PRADO -->
+          <article class="visit-cardx is-active">
             <div class="visit-cardx__text">
               <p class="visit-cardx__kicker">Arte</p>
               <h3 class="visit-cardx__title">Museo del Prado</h3>
-              <p class="visit-cardx__meta">Retiro / Prado · 2–3 h</p>
+              <p class="visit-cardx__meta">Barrio del Retiro · 2–3 h</p>
               <p class="visit-cardx__desc">
-                Velázquez, Goya, Rubens. Ideal si vienes por primera vez y quieres una ruta corta pero potente.
+                Velázquez, Goya y Rubens. Una visita esencial para entender la historia del arte en España.
               </p>
-              <a class="visit-cardx__link" href="#">Ver mapa</a>
             </div>
-  
+
             <div class="visit-cardx__media">
-              <div class="class-carousel" data-carousel>
-                <button class="car-btn car-prev" type="button">‹</button>
-  
+              <div class="class-carousel" data-carousel data-gallery="prado">
+                <button class="car-btn car-prev">‹</button>
                 <div class="car-viewport">
-                  <div class="car-track">
-                    <img src="img/prado-01.jpg" alt="Prado 1">
-                    <img src="img/prado-02.jpg" alt="Prado 2">
-                    <img src="img/prado-03.jpg" alt="Prado 3">
-                  </div>
+                  <div class="car-track"></div>
                 </div>
-  
-                <button class="car-btn car-next" type="button">›</button>
+                <button class="car-btn car-next">›</button>
               </div>
             </div>
           </article>
-  
-          <!-- CARD 2 (alternada) -->
-          <article class="visit-cardx visit-cardx--reverse" data-category="arte">
+
+          <!-- REINA SOFÍA -->
+          <article class="visit-cardx visit-cardx--reverse">
             <div class="visit-cardx__text">
               <p class="visit-cardx__kicker">Arte</p>
-              <h3 class="visit-cardx__title">Reina Sofía</h3>
+              <h3 class="visit-cardx__title">Museo Reina Sofía</h3>
               <p class="visit-cardx__meta">Atocha · 1–2 h</p>
               <p class="visit-cardx__desc">
-                Arte moderno y contemporáneo. Un cierre perfecto si ya has visto lo clásico.
+                Arte moderno y contemporáneo. El Guernica como punto de partida.
               </p>
-              <a class="visit-cardx__link" href="#">Ver mapa</a>
             </div>
-  
+
             <div class="visit-cardx__media">
-              <div class="class-carousel" data-carousel>
-                <button class="car-btn car-prev" type="button">‹</button>
-  
+              <div class="class-carousel" data-carousel data-gallery="reina-sofia">
+                <button class="car-btn car-prev">‹</button>
                 <div class="car-viewport">
-                  <div class="car-track">
-                    <img src="img/sofia-01.jpg" alt="Sofía 1">
-                    <img src="img/sofia-02.jpg" alt="Sofía 2">
-                    <img src="img/sofia-03.jpg" alt="Sofía 3">
-                  </div>
+                  <div class="car-track"></div>
                 </div>
-  
-                <button class="car-btn car-next" type="button">›</button>
+                <button class="car-btn car-next">›</button>
               </div>
             </div>
           </article>
+
+          <!-- THYSSEN -->
+          <article class="visit-cardx">
+            <div class="visit-cardx__text">
+              <p class="visit-cardx__kicker">Arte</p>
+              <h3 class="visit-cardx__title">Museo Thyssen</h3>
+              <p class="visit-cardx__meta">Paseo del Prado · 1–2 h</p>
+              <p class="visit-cardx__desc">
+                Una colección que conecta el arte clásico con el moderno.
+              </p>
+            </div>
+
+            <div class="visit-cardx__media">
+              <div class="class-carousel" data-carousel data-gallery="thyssen">
+                <button class="car-btn car-prev">‹</button>
+                <div class="car-viewport">
+                  <div class="car-track"></div>
+                </div>
+                <button class="car-btn car-next">›</button>
+              </div>
+            </div>
+          </article>
+
         </div>
-  
       </div>
     </section>
-  
-    <!-- =========================
+
+    <!-- ======================
          PASEOS
-         ========================= -->
-    <section class="visits-section" id="paseos" data-section="paseos">
+         ====================== -->
+    <section class="visits-section" data-section="paseos">
       <div class="container">
-  
+
         <header class="visits-section__head">
-          <h2 class="visits-section__title">Paseos</h2>
-          <p class="visits-section__intro">Madrid se decide caminando. Dos planes sin mapa.</p>
-  
+          <div>
+            <h2 class="visits-section__title">Paseos</h2>
+            <p class="visits-section__intro">
+              Madrid se descubre caminando.
+            </p>
+          </div>
+
           <div class="visits-nav">
-            <button class="nav-btn nav-prev" type="button">← Anterior</button>
+            <button class="nav-btn nav-prev">← Anterior</button>
             <span class="nav-count"><span class="current">1</span>/<span class="total">2</span></span>
-            <button class="nav-btn nav-next" type="button">Siguiente →</button>
+            <button class="nav-btn nav-next">Siguiente →</button>
           </div>
         </header>
-  
+
         <div class="visit-deck" data-deck="paseos">
-          <article class="visit-cardx is-active" data-category="paseos">
+
+          <article class="visit-cardx is-active">
             <div class="visit-cardx__text">
               <p class="visit-cardx__kicker">Paseos</p>
               <h3 class="visit-cardx__title">Parque del Retiro</h3>
-              <p class="visit-cardx__meta">Retiro · 1–2 h</p>
-              <p class="visit-cardx__desc">Estanque, Palacio de Cristal y sombra. Perfecto para parar el día.</p>
-              <a class="visit-cardx__link" href="#">Ruta rápida</a>
+              <p class="visit-cardx__meta">Centro · 1–2 h</p>
+              <p class="visit-cardx__desc">
+                Naturaleza, sombra y descanso en el corazón de la ciudad.
+              </p>
             </div>
+
             <div class="visit-cardx__media">
-              <div class="class-carousel" data-carousel>
-                <button class="car-btn car-prev" type="button">‹</button>
+              <div class="class-carousel" data-carousel data-gallery="retiro">
+                <button class="car-btn car-prev">‹</button>
                 <div class="car-viewport">
-                  <div class="car-track">
-                    <img src="img/retiro-01.jpg" alt="Retiro 1">
-                    <img src="img/retiro-02.jpg" alt="Retiro 2">
-                    <img src="img/retiro-03.jpg" alt="Retiro 3">
-                  </div>
+                  <div class="car-track"></div>
                 </div>
-                <button class="car-btn car-next" type="button">›</button>
+                <button class="car-btn car-next">›</button>
               </div>
             </div>
           </article>
-  
-          <article class="visit-cardx visit-cardx--reverse" data-category="paseos">
+
+          <article class="visit-cardx visit-cardx--reverse">
             <div class="visit-cardx__text">
               <p class="visit-cardx__kicker">Paseos</p>
-              <h3 class="visit-cardx__title">Madrid de los Austrias</h3>
-              <p class="visit-cardx__meta">Centro · 1–2 h</p>
-              <p class="visit-cardx__desc">Plaza Mayor, calles antiguas y plazas pequeñas. Muy “Madrid”.</p>
-              <a class="visit-cardx__link" href="#">Ver recorrido</a>
+              <h3 class="visit-cardx__title">Gran Vía & Capitol</h3>
+              <p class="visit-cardx__meta">Centro · Libre</p>
+              <p class="visit-cardx__desc">
+                Arquitectura, cines y el ritmo más urbano de Madrid.
+              </p>
             </div>
+
             <div class="visit-cardx__media">
-              <div class="class-carousel" data-carousel>
-                <button class="car-btn car-prev" type="button">‹</button>
+              <div class="class-carousel" data-carousel data-gallery="capitol">
+                <button class="car-btn car-prev">‹</button>
                 <div class="car-viewport">
-                  <div class="car-track">
-                    <img src="img/austrias-01.jpg" alt="Austrias 1">
-                    <img src="img/austrias-02.jpg" alt="Austrias 2">
-                    <img src="img/austrias-03.jpg" alt="Austrias 3">
-                  </div>
+                  <div class="car-track"></div>
                 </div>
-                <button class="car-btn car-next" type="button">›</button>
+                <button class="car-btn car-next">›</button>
               </div>
             </div>
           </article>
+
         </div>
-  
       </div>
     </section>
-  
-    <!-- =========================
-         GASTRO
-         ========================= -->
-    <section class="visits-section" id="gastro" data-section="gastro">
+
+    <!-- ======================
+         GASTRONOMÍA
+         ====================== -->
+    <section class="visits-section" data-section="gastro">
       <div class="container">
-  
+
         <header class="visits-section__head">
-          <h2 class="visits-section__title">Gastronomía</h2>
-          <p class="visits-section__intro">Tres paradas y ya: mercado, bar y dulce.</p>
-  
+          <div>
+            <h2 class="visits-section__title">Gastronomía</h2>
+            <p class="visits-section__intro">
+              Comer bien, sin complicaciones.
+            </p>
+          </div>
+
           <div class="visits-nav">
-            <button class="nav-btn nav-prev" type="button">← Anterior</button>
+            <button class="nav-btn nav-prev">← Anterior</button>
             <span class="nav-count"><span class="current">1</span>/<span class="total">2</span></span>
-            <button class="nav-btn nav-next" type="button">Siguiente →</button>
+            <button class="nav-btn nav-next">Siguiente →</button>
           </div>
         </header>
-  
+
         <div class="visit-deck" data-deck="gastro">
-          <article class="visit-cardx is-active" data-category="gastro">
+
+          <article class="visit-cardx is-active">
             <div class="visit-cardx__text">
               <p class="visit-cardx__kicker">Gastronomía</p>
               <h3 class="visit-cardx__title">Mercado de San Miguel</h3>
-              <p class="visit-cardx__meta">Centro · 45–90 min</p>
-              <p class="visit-cardx__desc">Tapeo fácil y rápido. Ideal si solo tienes una tarde.</p>
-              <a class="visit-cardx__link" href="#">Qué probar</a>
+              <p class="visit-cardx__meta">Centro · 1 h</p>
+              <p class="visit-cardx__desc">
+                Tapas rápidas y variedad en un solo espacio.
+              </p>
             </div>
+
             <div class="visit-cardx__media">
-              <div class="class-carousel" data-carousel>
-                <button class="car-btn car-prev" type="button">‹</button>
+              <div class="class-carousel" data-carousel data-gallery="san-miguel">
+                <button class="car-btn car-prev">‹</button>
                 <div class="car-viewport">
-                  <div class="car-track">
-                    <img src="img/sanmiguel-01.jpg" alt="San Miguel 1">
-                    <img src="img/sanmiguel-02.jpg" alt="San Miguel 2">
-                    <img src="img/sanmiguel-03.jpg" alt="San Miguel 3">
-                  </div>
+                  <div class="car-track"></div>
                 </div>
-                <button class="car-btn car-next" type="button">›</button>
+                <button class="car-btn car-next">›</button>
               </div>
             </div>
           </article>
-  
-          <article class="visit-cardx visit-cardx--reverse" data-category="gastro">
+
+          <article class="visit-cardx visit-cardx--reverse">
             <div class="visit-cardx__text">
               <p class="visit-cardx__kicker">Gastronomía</p>
-              <h3 class="visit-cardx__title">Chocolate con churros</h3>
-              <p class="visit-cardx__meta">Sol · 30–60 min</p>
-              <p class="visit-cardx__desc">Plan clásico, rápido y 100% Madrid. Perfecto para cerrar el día.</p>
-              <a class="visit-cardx__link" href="#">Dónde ir</a>
+              <h3 class="visit-cardx__title">La Latina</h3>
+              <p class="visit-cardx__meta">Domingos · Libre</p>
+              <p class="visit-cardx__desc">
+                Bares, terrazas y el ambiente más castizo.
+              </p>
             </div>
+
             <div class="visit-cardx__media">
-              <div class="class-carousel" data-carousel>
-                <button class="car-btn car-prev" type="button">‹</button>
+              <div class="class-carousel" data-carousel data-gallery="la-latina">
+                <button class="car-btn car-prev">‹</button>
                 <div class="car-viewport">
-                  <div class="car-track">
-                    <img src="img/churros-01.jpg" alt="Churros 1">
-                    <img src="img/churros-02.jpg" alt="Churros 2">
-                    <img src="img/churros-03.jpg" alt="Churros 3">
-                  </div>
+                  <div class="car-track"></div>
                 </div>
-                <button class="car-btn car-next" type="button">›</button>
+                <button class="car-btn car-next">›</button>
               </div>
             </div>
           </article>
+
         </div>
-  
       </div>
     </section>
-  
+
   </main>
-  
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>Guía de Madrid · Práctica Web</p>
+      <a href="#" class="site-footer__link">GitHub</a>
+    </div>
+  </footer>
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

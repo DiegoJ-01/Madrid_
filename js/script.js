@@ -1,449 +1,290 @@
 /* =========================================================
-   FUNCIONES PRINCIPALES
+   MENÚ RESPONSIVE
    ========================================================= */
-
-/* ----------------------------------------------
-   1) Menú responsive (burger + nav)
-   ---------------------------------------------- */
    function initMenu() {
-    var $burger = $(".burger");   // jQuery: selecciona el botón del menú
-    var $nav    = $("#main-nav"); // jQuery: nav principal
-    var $body   = $("body");
-
-    // Si no hay burger en esa página, no hacemos nada
-    if ($burger.length === 0) return;
-
-    $burger.on("click", function () {   // jQuery: .on("click", ...)
-        // Leemos el aria-expanded actual (true/false en texto)
-        var expanded = $(this).attr("aria-expanded") === "true";
-
-        // Actualizamos aria-expanded (accesibilidad)
-        $(this).attr("aria-expanded", (!expanded).toString());
-
-        // Abrimos/cerramos el menú añadiendo/quitando una clase
-        $nav.toggleClass("is-open");
-
-        // Bloqueamos el scroll del body cuando el menú está abierto
-        $body.toggleClass("no-scroll");
+    const $burger = $(".burger");
+    const $nav = $(".main-nav");
+  
+    if ($burger.length === 0 || $nav.length === 0) return;
+  
+    $burger.on("click", function () {
+      $nav.toggleClass("is-open");
+      $("body").toggleClass("no-scroll");
     });
-}
-
-
-/* ----------------------------------------------
-   2) Cambio de tema (claro / oscuro)
-   ---------------------------------------------- */
-function initTheme() {
-    var $toggle = $(".theme-toggle"); // botón del sol/luna
-    var $body   = $("body");
-
+  }
+  
+  /* =========================================================
+     TOGGLE TEMA CLARO / OSCURO
+     ========================================================= */
+  function initTheme() {
+    const $toggle = $(".theme-toggle");
     if ($toggle.length === 0) return;
-
+  
     $toggle.on("click", function () {
-        // Alternamos la clase que controla el tema en el CSS
-        $body.toggleClass("theme-dark");
-
-        // Cambiamos el aria-label para accesibilidad
-        var isDark = $body.hasClass("theme-dark");
-        $toggle.attr(
-            "aria-label",
-            isDark ? "Cambiar a tema claro" : "Cambiar a tema oscuro"
-        );
-
-
-/* ----------------------------------------------
-   3) Filtros de visitas (Visitas.html)
-   ---------------------------------------------- */
-   function initVisitsSections() {
-    var $tabs = $(".visits-filter");
-    var $sections = $(".visits-section");
+      $("body").toggleClass("theme-dark");
+    });
+  }
+  
+  /* =========================================================
+     GALERÍAS DE IMÁGENES (URLs CENTRALIZADAS)
+     ========================================================= */
+  const GALLERIES = {
+    "capitol": [
+      "https://images.adsttc.com/media/images/57da/bee0/e58e/ce37/9500/0034/slideshow/Felipe_Gabald%C3%B3n_Flickr.jpg?1473953482",
+      "https://images.adsttc.com/media/images/57da/c359/e58e/ce37/9500/0038/slideshow/capitol.jpg?1473954639",
+      "https://i.pinimg.com/1200x/dd/ad/21/ddad219bd31de834565a2c72e7663953.jpg"
+    ],
+  
+    "retiro": [
+      "https://i.pinimg.com/1200x/06/d0/20/06d0206fd32fb06206bc049c68a1c314.jpg",
+      "https://i.pinimg.com/1200x/1a/98/57/1a98571dc208fcf824491731e72116d4.jpg",
+      "https://i.pinimg.com/736x/84/03/b2/8403b259b5ffa8a7e8a9c68a25612f60.jpg"
+    ],
+  
+    "prado": [
+      "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvMy1kZS1tYXlvLWdveWEuanBnIiwicmVzaXplLDE1MDB8Zm9ybWF0LHdlYnAiXX0.t83BNU1x8wHKolw0u6FS-OZqTth3m4zdlA1--27xEDE.webp",
+      "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNWY1MGM1MjhhZDM1Mi5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.osXPvzB5gvHSQwWX4BZcLGR-6Phf14s8YkqQYngDocY.webp",
+      "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNjNhZWUwMTQzNWYzOC5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.bjR2KR2adxFRqS0skrcRILn9ruzIkI72lyhESC4sD8s.webp"
+    ],
+  
+    "reina-sofia": [
+      "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvcGFibG8tcGljYXNzby1ndWVybmljYS5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.tvCZ-woMXn0xZf2uCJMiKk6r1o_-iIvJhkyaFMufiTA.webp",
+      "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvYXMwMTk4NV83LmpwZyIsInJlc2l6ZSwxNTAwfGZvcm1hdCx3ZWJwIl19.tWNt61-YqcXUIkjsgDDiPXaXoxxYxpKUE0HTO-EfRH4.webp",
+      "https://recursos.museoreinasofia.es/styles/large_portrait/public/Obra/AD06620_2.jpg.webp"
+    ],
+  
+    "thyssen": [
+      "https://upload.wikimedia.org/wikipedia/commons/9/95/Edgar_Degas_-_Balan%C3%A7ant_danseurs.jpg",
+      "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNjIyMzM3MDI3MThlMS5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.Hl2FMrV9vFko-1sjVAzRkv5sBKHfvW6Rt_1aqxfHav0.webp",
+      "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNjAxMTYwYmIwZTY5Mi5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.0uc9FRx7wGSBNWZJZHCuEcp1sdGA6BovOmez8fSiNRM.webp"
+    ],
+  
+    "san-miguel": [
+      "https://i.pinimg.com/1200x/b0/d1/1f/b0d11f864afc8d20e41e0866dc485c66.jpg"
+    ],
+  
+    "la-latina": [
+      "https://i.pinimg.com/736x/25/d8/9b/25d89be892fbd95c5766b273dd110c85.jpg"
+    ]
+  };
+  
+  /* =========================================================
+     INYECTAR IMÁGENES EN CARRUSELES
+     - Busca: [data-carousel][data-gallery]
+     - Mete <img> dentro de .car-track
+     ========================================================= */
+  function initGalleryInjection() {
+    $("[data-carousel][data-gallery]").each(function () {
+      const $carousel = $(this);
+      const key = String($carousel.data("gallery") || "").trim();
+      const images = GALLERIES[key];
+  
+      if (!images || images.length === 0) return;
+  
+      const $track = $carousel.find(".car-track");
+      if ($track.length === 0) return;
+  
+      $track.empty();
+  
+      images.forEach(function (url, i) {
+        const cleanUrl = String(url).trim().replace(/^vhttps:\/\//, "https://"); // por si se coló "vhttps"
+        const $img = $("<img>", {
+          src: cleanUrl,
+          alt: key + " " + (i + 1),
+          loading: "lazy"
+        });
+  
+        // Si una URL da error, la quitamos sin romper el carrusel
+        $img.on("error", function () {
+          $(this).remove();
+        });
+  
+        $track.append($img);
+      });
+  
+      // Set total en contador si existe
+      const total = $track.find("img").length;
+      const $totalEl = $carousel.find(".car-total");
+      if ($totalEl.length) $totalEl.text(total);
+      const $curEl = $carousel.find(".car-current");
+      if ($curEl.length) $curEl.text(total > 0 ? 1 : 0);
+    });
+  }
+  
+  /* =========================================================
+     CARRUSEL "EDITORIAL" (VERTICAL)
+     - Sin API: scroll vertical + scroll-snap (CSS)
+     - Botones prev/next = scroll al siguiente bloque
+     - Contador se actualiza según scroll
+     ========================================================= */
+  function initEditorialCarousels() {
+    $("[data-carousel]").each(function () {
+      const $carousel = $(this);
+      const $viewport = $carousel.find(".car-viewport");
+      const $track = $carousel.find(".car-track");
+      const $imgs = $track.find("img");
+  
+      if ($viewport.length === 0 || $track.length === 0) return;
+  
+      let total = $imgs.length;
+      if (total === 0) return;
+  
+      const $curEl = $carousel.find(".car-current");
+      const $totalEl = $carousel.find(".car-total");
+      if ($totalEl.length) $totalEl.text(total);
+      if ($curEl.length) $curEl.text(1);
+  
+      function getCurrentIndex() {
+        // Calcula el índice mirando qué imagen está más cerca del top del viewport
+        const vp = $viewport[0];
+        const vpRect = vp.getBoundingClientRect();
+        let bestIdx = 0;
+        let bestDist = Infinity;
+  
+        $track.find("img").each(function (i) {
+          const r = this.getBoundingClientRect();
+          const dist = Math.abs(r.top - vpRect.top);
+          if (dist < bestDist) {
+            bestDist = dist;
+            bestIdx = i;
+          }
+        });
+  
+        return bestIdx;
+      }
+  
+      function scrollToIndex(idx) {
+        const $all = $track.find("img");
+        const clamped = Math.max(0, Math.min(idx, $all.length - 1));
+        const el = $all.get(clamped);
+        if (!el) return;
+  
+        // Scroll suave al elemento dentro del viewport
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+  
+        // Actualiza contador (optimista)
+        if ($curEl.length) $curEl.text(clamped + 1);
+      }
+  
+      // Botones
+      $carousel.find(".car-prev").off("click").on("click", function () {
+        const idx = getCurrentIndex();
+        scrollToIndex(idx - 1);
+      });
+  
+      $carousel.find(".car-next").off("click").on("click", function () {
+        const idx = getCurrentIndex();
+        scrollToIndex(idx + 1);
+      });
+  
+      // Actualiza contador al hacer scroll (con debounce)
+      let scrollTimer = null;
+      $viewport.off("scroll").on("scroll", function () {
+        if (scrollTimer) clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(function () {
+          const idx = getCurrentIndex();
+          if ($curEl.length) $curEl.text(idx + 1);
+        }, 120);
+      });
+  
+      // Por si cambia el DOM (lazy load / errores)
+      $(window).on("load", function () {
+        const idx = getCurrentIndex();
+        if ($curEl.length) $curEl.text(idx + 1);
+        total = $track.find("img").length;
+        if ($totalEl.length) $totalEl.text(total);
+      });
+    });
+  }
+  
+  /* =========================================================
+     VISITAS · CAMBIO DE SECCIONES (ARTE / PASEOS / GASTRO)
+     - No API: es mostrar/ocultar secciones en el HTML
+     ========================================================= */
+  function initVisitsSections() {
+    const $tabs = $(".visits-filter");
+    const $sections = $(".visits-section");
   
     if ($tabs.length === 0 || $sections.length === 0) return;
   
-    $tabs.on("click", function () {
-      var target = $(this).data("section");
+    $tabs.off("click").on("click", function () {
+      const target = String($(this).data("section") || "").trim();
+      if (!target) return;
   
       $tabs.removeClass("is-active");
       $(this).addClass("is-active");
   
       $sections.removeClass("is-active");
       $sections.filter('[data-section="' + target + '"]').addClass("is-active");
+  
+      // Cuando cambio de sección, vuelvo a la primera card de esa sección
+      const $deck = $sections
+        .filter('[data-section="' + target + '"]')
+        .find('.visit-deck[data-deck="' + target + '"]');
+  
+      const $cards = $deck.find(".visit-cardx");
+      if ($cards.length) {
+        $cards.removeClass("is-active");
+        $cards.eq(0).addClass("is-active");
+        $sections.filter('[data-section="' + target + '"]').find(".current").text(1);
+        $sections.filter('[data-section="' + target + '"]').find(".total").text($cards.length);
+      }
+  
+      // Asegura que contadores de carrusel estén ok
+      initEditorialCarousels();
     });
   }
   
+  /* =========================================================
+     VISITAS · UNA CARD A LA VEZ (DECK NAV)
+     ========================================================= */
   function initDeckNavigation() {
     $(".visits-section").each(function () {
-      var $section = $(this);
-      var deckKey = $section.data("section");
-      var $deck = $section.find('.visit-deck[data-deck="' + deckKey + '"]');
-      var $cards = $deck.find(".visit-cardx");
+      const $section = $(this);
+      const key = String($section.data("section") || "").trim();
   
-      if ($deck.length === 0 || $cards.length === 0) return;
+      const $deck = $section.find('.visit-deck[data-deck="' + key + '"]');
+      const $cards = $deck.find(".visit-cardx");
+      if ($cards.length === 0) return;
   
-      var idx = 0;
-      var total = $cards.length;
+      let index = 0;
+      const total = $cards.length;
   
       $section.find(".total").text(total);
-      $section.find(".current").text(idx + 1);
   
-      function showCard(i) {
-        idx = (i + total) % total;
+      function show(i) {
+        index = (i + total) % total;
         $cards.removeClass("is-active");
-        $cards.eq(idx).addClass("is-active");
-        $section.find(".current").text(idx + 1);
+        $cards.eq(index).addClass("is-active");
+        $section.find(".current").text(index + 1);
+  
+        // Recalcula carruseles por si cambian tamaños al mostrarse
+        initEditorialCarousels();
       }
   
-      // botones de la sección
-      $section.find(".nav-prev").on("click", function () { showCard(idx - 1); });
-      $section.find(".nav-next").on("click", function () { showCard(idx + 1); });
+      $section.find(".nav-prev").off("click").on("click", function () {
+        show(index - 1);
+      });
+  
+      $section.find(".nav-next").off("click").on("click", function () {
+        show(index + 1);
+      });
+  
+      show(0);
     });
   }
   
-  function initClassCarousels() {
-    $("[data-carousel]").each(function () {
-      var $car = $(this);
-      var $track = $car.find(".car-track");
-      var $slides = $track.find("img");
-      var total = $slides.length;
-      var idx = 0;
-  
-      function go(i) {
-        idx = (i + total) % total;
-        $track.css("transform", "translateX(" + (-idx * 100) + "%)");
-      }
-  
-      $car.find(".car-prev").on("click", function () { go(idx - 1); });
-      $car.find(".car-next").on("click", function () { go(idx + 1); });
-  
-      go(0);
-    });
-  }
-  
-  /* Llamadas */
+  /* =========================================================
+     READY
+     ========================================================= */
   $(document).ready(function () {
     initMenu();
     initTheme();
   
-    initVisitsSections();   // tabs Arte/Paseos/Gastro
-    initDeckNavigation();   // 1 card a la vez
-    initClassCarousels();   // carrusel simple
+    initGalleryInjection();    // mete imágenes por URL
+    initEditorialCarousels();  // carrusel editorial vertical + contador
+  
+    initVisitsSections();      // tabs
+    initDeckNavigation();      // una card por sección
   });
-  
-
-    // botones de la sección
-    $section.find(".nav-prev").on("click", function () { showCard(idx - 1); });
-    $section.find(".nav-next").on("click", function () { showCard(idx + 1); });
-  });
-}
-
-function initClassCarousels() {
-  $("[data-carousel]").each(function () {
-    var $car = $(this);
-    var $track = $car.find(".car-track");
-    var $slides = $track.find("img");
-    var total = $slides.length;
-    var idx = 0;
-
-    function go(i) {
-      idx = (i + total) % total;
-      $track.css("transform", "translateX(" + (-idx * 100) + "%)");
-    }
-
-    $car.find(".car-prev").on("click", function () { go(idx - 1); });
-    $car.find(".car-next").on("click", function () { go(idx + 1); });
-
-    go(0);
-  });
-}
-
-/* Llamadas */
-$(document).ready(function () {
-  initMenu();
-  initTheme();
-
-  initVisitsSections();   // tabs Arte/Paseos/Gastro
-  initDeckNavigation();   // 1 card a la vez
-  initClassCarousels();   // carrusel simple
-});
-
-
-
-/* ----------------------------------------------
-   4) Modal de detalles de visita (Visitas.html)
-   ---------------------------------------------- */
-function initVisitsModal() {
-    var $modal   = $("#visit-modal");
-    var $overlay = $modal.find(".visit-modal__overlay");
-    var $close   = $modal.find(".visit-modal__close");
-    var $title   = $modal.find(".visit-modal__title");
-    var $text    = $modal.find(".visit-modal__text");
-    var $body    = $("body");
-    var $buttons = $(".visit-card__more"); // botón "Más detalles"
-
-    if ($buttons.length === 0 || $modal.length === 0) return;
-
-    // Pequeño "diccionario" con textos extra para el modal
-    var visitData = {
-        "prado": {
-            title: "Museo del Prado",
-            text: "Museo imprescindible si te interesa el arte clásico. Lo ideal es reservar varias horas y combinarlo con un paseo por el Retiro."
-        },
-        "palacio-real": {
-            title: "Palacio Real",
-            text: "Zona perfecta para pasear entre jardines y plazas, combinando el Palacio Real con la Catedral de la Almudena."
-        },
-        "retiro": {
-            title: "Parque del Retiro",
-            text: "Parque muy céntrico, con el Estanque Grande y el Palacio de Cristal como puntos más reconocibles."
-        },
-        "gran-via": {
-            title: "Gran Vía",
-            text: "Arteria principal de ocio y compras, con teatros, cines y edificios icónicos."
-        },
-        "plaza-mayor": {
-            title: "Plaza Mayor",
-            text: "Plaza histórica rodeada de soportales, muy cerca del Mercado de San Miguel y otras zonas del casco antiguo."
-        },
-        "debod": {
-            title: "Templo de Debod",
-            text: "Uno de los atardeceres más conocidos de Madrid, con vistas abiertas hacia la Casa de Campo."
-        }
-    };
-
-    function openModal(id) {
-        var data = visitData[id];
-
-        if (data) {
-            $title.text(data.title);
-            $text.text(data.text);
-        } else {
-            $title.text("Visita");
-            $text.text("Detalles adicionales de la visita seleccionada.");
-        }
-
-        $modal.addClass("is-visible");
-        $body.addClass("no-scroll");
-    }
-
-    function closeModal() {
-        $modal.removeClass("is-visible");
-        $body.removeClass("no-scroll");
-    }
-
-    // Abrir modal
-    $buttons.on("click", function () {
-        var id = $(this).data("visit"); // ej. "prado"
-        openModal(id);
-    });
-
-    // Cerrar modal por overlay, botón o tecla ESC
-    $overlay.on("click", closeModal);
-    $close.on("click", closeModal);
-
-    $(document).on("keydown", function (e) {
-        if (e.key === "Escape") {
-            closeModal();
-        }
-    });
-}
-
-
-/* ----------------------------------------------
-   5) Tabs de clima (Clima.html)
-   ---------------------------------------------- */
-function initClimateTabs() {
-    var $tabs   = $(".climate-tab");
-    var $panels = $(".climate-panel");
-
-    if ($tabs.length === 0 || $panels.length === 0) return;
-
-    $tabs.on("click", function () {
-        var target = $(this).data("tab");  // "clima", "cuando", "maleta"
-
-        // Actualizamos estado visual de los tabs
-        $tabs.removeClass("is-active");
-        $(this).addClass("is-active");
-
-        // Mostramos el panel que tenga ese data-tab-target
-        $panels.removeClass("is-active");
-        $panels.filter('[data-tab-target="' + target + '"]').addClass("is-active");
-    });
-}
-
-
-/* ----------------------------------------------
-   6) Gráfico de clima con Chart.js (Clima.html)
-   ---------------------------------------------- */
-function initClimateChart() {
-    // Comprobamos si existe el canvas y si Chart está cargado
-    var $canvas = $("#climateChart");
-    if ($canvas.length === 0 || typeof Chart === "undefined") {
-        return;
-    }
-
-    var ctx = $canvas[0].getContext("2d");
-
-    // Datos de temperaturas medias en ºC (aprox Madrid)
-    var labelsMeses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
-                       "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
-
-    var tempsC = [6, 8, 11, 13, 18, 23, 27, 27, 23, 17, 11, 7];
-
-    // Conversión a ºF (por si el usuario cambia unidad)
-    var tempsF = tempsC.map(function (c) {
-        return (c * 9 / 5) + 32;
-    });
-
-    // === Igual que en el ejemplo de clase: datos + config + new Chart() ===
-    // (aquí usamos una sola línea en lugar de barras/tarta/línea distintas) :contentReference[oaicite:1]{index=1}
-    var datosClima = {
-        labels: labelsMeses,
-        datasets: [{
-            label: "Temperatura media",
-            backgroundColor: "#b0282b",
-            borderColor: "#b0282b",
-            data: tempsC,
-            tension: 0.3,
-            pointRadius: 0
-        }]
-    };
-
-    var configClima = {
-        type: "line",
-        data: datosClima,
-        options: {
-            scales: {
-                x: {
-                    border: {
-                        color: "black",
-                        width: 1
-                    }
-                },
-                y: {
-                    min: 0,
-                    max: 40,
-                    title: {
-                        display: true,
-                        text: "Temperatura (ºC)"
-                    },
-                    border: {
-                        color: "black",
-                        width: 1
-                    }
-                }
-            }
-        }
-    };
-
-    // Creamos el gráfico igual que en el ejemplo de clase:
-    // var grafico = $("#linea")[0].getContext("2d");
-    // new Chart(grafico, config);
-    var climateChart = new Chart(ctx, configClima);
-
-    // Botones para cambiar entre ºC y ºF
-    var $unitButtons = $(".climate-units__btn");
-
-    $unitButtons.on("click", function () {
-        var unit = $(this).data("unit"); // "c" o "f"
-
-        $unitButtons.removeClass("is-active");
-        $(this).addClass("is-active");
-
-        if (unit === "c") {
-            climateChart.data.datasets[0].data = tempsC;
-            climateChart.options.scales.y.title.text = "Temperatura (ºC)";
-        } else {
-            climateChart.data.datasets[0].data = tempsF;
-            climateChart.options.scales.y.title.text = "Temperatura (ºF)";
-        }
-
-        climateChart.update();
-    });
-}
-
-
-/* ----------------------------------------------
-   7) Cuando el DOM está listo, inicializamos todo
-   ---------------------------------------------- */
-$(document).ready(function () {
-    initMenu();
-    initTheme();
-    initVisitsFilters();
-    initVisitsModal();
-    initClimateTabs();
-    initClimateChart();
-    initLockedCarousels();
-});
-function initLockedCarousels() {
-    var $carousels = $(".locked-carousel");
-    if ($carousels.length === 0) return;
-  
-    function setSlide($c, idx) {
-      var steps = parseInt($c.attr("data-steps") || "3", 10);
-      idx = Math.max(0, Math.min(steps - 1, idx));
-  
-      $c.data("idx", idx);
-  
-      var $track = $c.find(".locked-track");
-      $track.css("transform", "translateX(" + (-idx * 100) + "%)");
-  
-      $c.find(".locked-progress").text((idx + 1) + " / " + steps);
-  
-      // marcar completado al llegar al último
-      if (idx === steps - 1) {
-        $c.data("done", true);
-      }
-    }
-  
-    function isInViewport($el) {
-      var r = $el[0].getBoundingClientRect();
-      return r.top < window.innerHeight * 0.45 && r.bottom > window.innerHeight * 0.55;
-    }
-  
-    // init
-    $carousels.each(function () {
-      var $c = $(this);
-      $c.data("idx", 0);
-      $c.data("done", false);
-      setSlide($c, 0);
-    });
-  
-    // botones
-    $(document).on("click", ".locked-next", function () {
-      var $c = $(this).closest(".locked-carousel");
-      setSlide($c, ($c.data("idx") || 0) + 1);
-    });
-  
-    $(document).on("click", ".locked-prev", function () {
-      var $c = $(this).closest(".locked-carousel");
-      setSlide($c, ($c.data("idx") || 0) - 1);
-      $c.data("done", false); // si vuelves atrás, se “descompleta”
-    });
-  
-    // BLOQUEO de rueda/trackpad mientras el carrusel no esté completado
-    window.addEventListener("wheel", function (e) {
-      // busca el carrusel "activo" (centrado)
-      var active = null;
-      $carousels.each(function () {
-        var $c = $(this);
-        if (!$c.data("done") && isInViewport($c)) active = $c;
-      });
-  
-      if (!active) return;
-  
-      // bloquea scroll de página
-      e.preventDefault();
-  
-      var delta = e.deltaY;
-      var idx = active.data("idx") || 0;
-      var steps = parseInt(active.attr("data-steps") || "3", 10);
-  
-      if (delta > 0 && idx < steps - 1) {
-        setSlide(active, idx + 1);
-      } else if (delta < 0 && idx > 0) {
-        setSlide(active, idx - 1);
-        active.data("done", false);
-      }
-      // si ya está en el último, no bloquea más (porque active.data("done") será true)
-    }, { passive: false });
-  }
   
