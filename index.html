@@ -3,262 +3,90 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Madrid · Guía de ciudad</title>
+    <title>Madrid · City Guide</title>
 
-    <!-- Meta básica SEO -->
-    <meta name="description" content="Guía rápida de Madrid: barrios, visitas imprescindibles y clima para planificar tu viaje." />
+    <meta name="description" content="Portada editorial de la guía de Madrid: barrios, visitas y clima para preparar tu viaje." />
 
-    <!-- CSS principal -->
+    <!-- Tipos: sans + serif editorial -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Sans para cuerpo + serif para titular editorial -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css" />
-
-    
-
 </head>
 <body class="theme-light">
 
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="header-inner container">
-            <a href="index.html" class="site-logo">
-                <span class="site-logo__mark">M</span>
-                <span class="site-logo__text">Madrid</span>
-            </a>
 
-            <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
-                <span class="burger__line"></span>
-                <span class="burger__line"></span>
-                <span class="burger__line"></span>
-            </button>
 
-            <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
-                <ul class="main-nav__list">
-                    <li><a href="index.html" class="is-current">Inicio</a></li>
-                    <li><a href="visitas.html">Visitas</a></li>
-                    <li><a href="clima.html">Clima</a></li>
-                    
-                </ul>
-
-                <button class="theme-toggle" type="button" aria-label="Cambiar tema">
-                    <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
-                    <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
-                </button>
-            </nav>
-        </div>
-    </header>
-
-    <!-- CONTENIDO PRINCIPAL -->
     <main>
 
-        <!-- HERO -->
-        <section class="hero" id="inicio">
-            <div class="hero__inner container">
-                <div class="hero__content">
-                    <p class="hero__eyebrow">Guía de ciudad</p>
-                    <h1 class="hero__title">Madrid, luz todo el año.</h1>
-                    <p class="hero__subtitle">
-                        Una guía rápida y visual para entender sus barrios, qué visitar y cuál es
-                        la mejor época para venir.
-                    </p>
-                    <div class="hero__actions">
-                        <a href="visitas.html" class="btn btn--primary">Ver visitas imprescindibles</a>
-                        <a href="clima.html" class="btn btn--ghost">Planificar según el clima</a>
-                    </div>
-                </div>
+        <!-- PORTADA EDITORIAL -->
+        <section class="hero hero--cover" aria-label="Portada editorial de Madrid">
+            <!-- Esto es la imagen / textura de fondo tipo DeGraw & DeHaan -->
+            <div class="hero-cover__bg" aria-hidden="true"></div>
 
-                <div class="hero__media">
-                    <!--  ilustración de Madrid -->
-                    <div class="hero__placeholder">
-                        <!-- Placeholder visual,  -->
-                        <span class="hero__placeholder-label">Vista de Madrid</span>
-                    </div>
-                </div>
+            <!-- Botones en las esquinas, estilo editorial tipo Studio Lyon Szot -->
+            <div class="hero-cover__corners">
+                <a href="index.html" class="corner-link corner-link--tl">
+                    Madrid · Spain
+                </a>
+                <a href="visitas.html" class="corner-link corner-link--tr">
+                    Visitas
+                </a>
+                <a href="#intro" class="corner-link corner-link--bl">
+                    Sobre la ciudad
+                </a>
+                <a href="clima.html" class="corner-link corner-link--br">
+                    Clima
+                </a>
+            </div>
+
+            <!-- Bloque central, tipo editorial -->
+            <div class="hero-cover__center">
+                <p class="hero-cover__eyebrow">City guide</p>
+                <h1 class="hero-cover__title">
+                    Madrid,
+                    <span>luz todo el año.</span>
+                </h1>
+                <p class="hero-cover__subtitle">
+                    Una mirada calma a los barrios, plazas y parques de la ciudad,
+                    pensada para tu primera visita.
+                </p>
+            </div>
+
+            <!-- Pequeño scroll hint abajo -->
+            <div class="hero-cover__scroll">
+                <span class="hero-cover__scroll-line"></span>
+                <span class="hero-cover__scroll-text">Desliza para empezar</span>
             </div>
         </section>
 
-        <!-- POR QUÉ MADRID -->
-        <section class="section section--why" id="por-que-madrid">
+        <!-- BLOQUE INTRO (muy sencillo, para que no se quede solo la portada) -->
+        <section class="section section--intro" id="intro">
             <div class="section__inner container">
                 <header class="section__header">
-                    <h2 class="section__title">Por qué Madrid</h2>
+                    <h2 class="section__title">Una ciudad para vivirla caminando</h2>
                     <p class="section__intro">
-                        Cultura, gastronomía y vida nocturna concentradas en una ciudad
-                        fácil de recorrer y con buen clima durante todo el año.
+                        Esta guía resume lo básico para orientarte en Madrid: qué barrios
+                        deberías conocer, qué visitas encajan mejor en pocos días y cómo
+                        es el clima a lo largo del año.
                     </p>
                 </header>
-
-                <div class="features-grid">
-                    <article class="feature-card">
-                        <h3 class="feature-card__title">Cultura</h3>
-                        <p class="feature-card__text">
-                            Museos de referencia mundial como el Prado o el Reina Sofía,
-                            teatros, festivales y una escena artística muy viva.
-                        </p>
-                    </article>
-
-                    <article class="feature-card">
-                        <h3 class="feature-card__title">Gastronomía</h3>
-                        <p class="feature-card__text">
-                            De los bares de toda la vida a restaurantes contemporáneos.
-                            Tapas, mercados y cocina internacional en cada barrio.
-                        </p>
-                    </article>
-
-                    <article class="feature-card">
-                        <h3 class="feature-card__title">Vida urbana</h3>
-                        <p class="feature-card__text">
-                            Calles siempre activas, terrazas, parques urbanos y barrios
-                            con personalidad propia que se descubren caminando.
-                        </p>
-                    </article>
-                </div>
             </div>
         </section>
 
-        <!-- BARRIOS DESTACADOS -->
-        <section class="section section--neighborhoods" id="barrios">
-            <div class="section__inner container">
-                <header class="section__header">
-                    <h2 class="section__title">Barrios que deberías conocer</h2>
-                    <p class="section__intro">
-                        Una primera selección de barrios para orientarte en tu primer viaje.
-                        Más detalles y visitas concretas en la página de Visitas.
-                    </p>
-                </header>
-
-                <div class="neighborhoods-grid">
-                    <!-- Card 1 -->
-                    <article class="neighborhood-card" data-district="malasana">
-                        <header class="neighborhood-card__header">
-                            <h3 class="neighborhood-card__title">Malasaña</h3>
-                            <p class="neighborhood-card__subtitle">Cafés, tiendas independientes y noche.</p>
-                        </header>
-                        <p class="neighborhood-card__text">
-                            Un barrio joven y creativo, lleno de bares, locales de música y
-                            pequeñas tiendas. Ideal para callejear sin rumbo.
-                        </p>
-                        <ul class="neighborhood-card__tags">
-                            <li>#creatividad</li>
-                            <li>#bares</li>
-                            <li>#tiendas</li>
-                        </ul>
-                        <a href="visitas.html" class="neighborhood-card__link">
-                            Ver visitas cercanas
-                        </a>
-                    </article>
-
-                    <!-- Card 2 -->
-                    <article class="neighborhood-card" data-district="latina">
-                        <header class="neighborhood-card__header">
-                            <h3 class="neighborhood-card__title">La Latina</h3>
-                            <p class="neighborhood-card__subtitle">Tapas, plazas y calles estrechas.</p>
-                        </header>
-                        <p class="neighborhood-card__text">
-                            Zona perfecta para ir de tapas, especialmente los fines de semana.
-                            Ideal para tomarle el pulso al ambiente madrileño.
-                        </p>
-                        <ul class="neighborhood-card__tags">
-                            <li>#tapas</li>
-                            <li>#plazas</li>
-                            <li>#ambiente</li>
-                        </ul>
-                        <a href="visitas.html" class="neighborhood-card__link">
-                            Ver visitas cercanas
-                        </a>
-                    </article>
-
-                    <!-- Card 3 -->
-                    <article class="neighborhood-card" data-district="retiro">
-                        <header class="neighborhood-card__header">
-                            <h3 class="neighborhood-card__title">Retiro / Prado</h3>
-                            <p class="neighborhood-card__subtitle">Arte y parque en el mismo eje.</p>
-                        </header>
-                        <p class="neighborhood-card__text">
-                            El triángulo del arte y el Parque del Retiro forman una de las zonas
-                            más agradables para combinar museos y paseos.
-                        </p>
-                        <ul class="neighborhood-card__tags">
-                            <li>#museos</li>
-                            <li>#parques</li>
-                            <li>#paseos</li>
-                        </ul>
-                        <a href="visitas.html" class="neighborhood-card__link">
-                            Ver visitas cercanas
-                        </a>
-                    </article>
-
-                    <!-- Card 4 -->
-                    <article class="neighborhood-card" data-district="salamanca">
-                        <header class="neighborhood-card__header">
-                            <h3 class="neighborhood-card__title">Barrio de Salamanca</h3>
-                            <p class="neighborhood-card__subtitle">Compras y arquitectura elegante.</p>
-                        </header>
-                        <p class="neighborhood-card__text">
-                            Calles amplias, tiendas de marca y edificios señoriales. Una cara
-                            más calmada y sofisticada de la ciudad.
-                        </p>
-                        <ul class="neighborhood-card__tags">
-                            <li>#compras</li>
-                            <li>#arquitectura</li>
-                            <li>#paseos</li>
-                        </ul>
-                        <a href="visitas.html" class="neighborhood-card__link">
-                            Ver visitas cercanas
-                        </a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- PLANIFICA TU VIAJE -->
-        <section class="section section--plan" id="planifica">
-            <div class="section__inner container section--plan__inner">
-                <div class="section--plan__content">
-                    <h2 class="section__title">Planifica según el clima</h2>
-                    <p class="section__intro">
-                        Madrid tiene inviernos suaves y veranos calurosos. Consulta las temperaturas
-                        medias y los días de lluvia por mes para elegir mejor cuándo venir.
-                    </p>
-                    <a href="clima.html" class="btn btn--primary">
-                        Ver gráfico de clima
-                    </a>
-                </div>
-
-                <div class="section--plan__preview">
-                    <!--  mini-card del gráfico o algún dato clave -->
-                    <p class="plan-preview__text">
-                        Pista: la primavera y el otoño suelen ser las épocas más agradables para recorrer la ciudad a pie.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- INFO PRÁCTICA ?  -->
-        <!--
-        <section class="section section--info" id="info-practica">
-            ...
-        </section>
-        -->
-
+        <!-- Aquí luego engancharás secciones o directamente enlazas a Visitas / Clima -->
     </main>
+    
+    <!-- jQuery + script -->
+    <!-- jQuery oficial  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="site-footer__inner container">
-            <p class="site-footer__text">
-                Guía de Madrid · Proyecto académico de Diseño Web Avanzado.
-            </p>
-            <a href="https://github.com/tu-usuario/tu-repo-madrid" class="site-footer__link" target="_blank" rel="noopener">
-                Ver código en GitHub
-            </a>
-        </div>
-    </footer>
-
-    <!-- jQuery (obligatorio en la práctica) -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-            crossorigin="anonymous"></script>
-
-    <!-- JS principal -->
+    <!-- script general -->
     <script src="js/script.js"></script>
+
 </body>
 </html>

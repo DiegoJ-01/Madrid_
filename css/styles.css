@@ -985,4 +985,170 @@
            margin: 80px 16px;
        }
    }
-   
+   /* =========================================================
+   PORTADA EDITORIAL (INDEX)
+   ========================================================= */
+
+.hero--cover {
+    position: relative;
+    min-height: calc(100vh - var(--header-height));
+    padding: 40px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Fondo tipo foto + overlay suave */
+.hero-cover__bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.15)),
+      url("../img/header.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: saturate(1.05);
+    opacity: 0.95;
+    z-index: -2;
+}
+
+body.theme-dark .hero-cover__bg {
+    filter: saturate(1.1) contrast(1.05);
+    opacity: 0.9;
+}
+
+/* Capa sutil para textura / grano si quieres luego */
+.hero--cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at top, rgba(255,255,255,0.09), transparent 55%);
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Corners tipo editorial */
+.hero-cover__corners {
+    position: absolute;
+    inset: 0;
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: none; /* las hijas sí tendrán pointer-events */
+}
+
+/* truco: dos columnas, arriba y abajo */
+.hero-cover__corners::before {
+    content: "";
+    position: absolute;
+    inset: 50% 0 auto;
+}
+
+/* Links esquina */
+.corner-link {
+    position: absolute;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #f5f5f5;
+    pointer-events: auto;
+    text-decoration: none;
+}
+
+.corner-link--tl { top: 24px; left: 28px; }
+.corner-link--tr { top: 24px; right: 28px; }
+.corner-link--bl { bottom: 28px; left: 28px; }
+.corner-link--br { bottom: 28px; right: 28px; }
+
+.corner-link:hover {
+    text-decoration: underline;
+}
+
+/* Bloque central editorial */
+.hero-cover__center {
+    max-width: 720px;
+    text-align: left;
+    color: #f8f3ec;
+}
+
+.hero-cover__eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    opacity: 0.85;
+}
+
+.hero-cover__title {
+    font-family: "Playfair Display", "Times New Roman", serif;
+    font-weight: 600;
+    font-size: clamp(42px, 6vw, 60px);
+    line-height: 1.05;
+    margin: 0 0 12px;
+}
+
+.hero-cover__title span {
+    display: block;
+    font-weight: 500;
+}
+
+.hero-cover__subtitle {
+    max-width: 460px;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* Indicador scroll */
+.hero-cover__scroll {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(248, 243, 236, 0.78);
+}
+
+.hero-cover__scroll-line {
+    width: 1px;
+    height: 32px;
+    background-color: rgba(248, 243, 236, 0.75);
+}
+
+/* Responsive portada editorial */
+@media (max-width: 720px) {
+    .hero--cover {
+        padding: 24px 18px;
+    }
+
+    .corner-link--tl { top: 18px; left: 18px; }
+    .corner-link--tr { top: 18px; right: 18px; }
+    .corner-link--bl { bottom: 18px; left: 18px; display:none; } /* si quieres limpiar en móvil */
+    .corner-link--br { bottom: 18px; right: 18px; }
+
+    .hero-cover__center {
+        text-align: left;
+    }
+
+    .hero-cover__title {
+        font-size: clamp(32px, 8vw, 44px);
+    }
+
+    .hero-cover__subtitle {
+        max-width: none;
+    }
+
+    .hero-cover__scroll {
+        bottom: 18px;
+    }
+}
