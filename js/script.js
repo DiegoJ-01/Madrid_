@@ -217,7 +217,7 @@
         ],
         sanmiguel: [
           "https://images.unsplash.com/photo-1664695407561-72d0d171e44e?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-          "https://images.unsplash.com/photo-1583992332991-8f9ce155a0de?w=1200&q=80https://www.miradormadrid.com/wp-content/uploads/2021/07/Mercado-de-San-Miguel-Comunicacion-2.jpg"
+          "https://images.unsplash.com/photo-1583992332991-8f9ce155a0de?w=1200&q=80"
         ],
         latina: [
           "https://offloadmedia.feverup.com/madridsecreto.co/wp-content/uploads/2019/11/04043917/shutterstock_1548317732-1.jpg",
