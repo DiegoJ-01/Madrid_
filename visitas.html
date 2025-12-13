@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Madrid · Visitas</title>
 
-  <meta name="description" content="Tres rutas simples: arte, paseos y gastronomía. Madrid, sin prisa." />
+  <meta name="description" content="Tres rutas simples: arte, paseos y ocio. Madrid, sin prisa." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +39,7 @@
 
         <button class="theme-toggle" type="button" aria-label="Cambiar tema">
           <span class="theme-toggle__icon theme-toggle__icon--light">☀</span>
-          <span class="theme-toggle__icon theme-toggle__icon--dark">●</span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark">◐</span>
         </button>
       </nav>
     </div>
@@ -53,19 +53,19 @@
         <p class="vis-hero__eyebrow">Visitas</p>
         <h1 class="vis-hero__title">Madrid, sin prisa</h1>
         <p class="vis-hero__subtitle">
-          Tres rutas simples para decidirte antes de viajar: arte, paseos y gastronomía.
+          Tres rutas para vivir la ciudad: arte, paseos y ocio nocturno.
         </p>
 
         <!-- Filtros (tabs) -->
         <div class="vis-tabs" role="tablist" aria-label="Categorías">
           <button class="vis-tab is-active" type="button" data-category="arte" role="tab" aria-selected="true">Arte</button>
           <button class="vis-tab" type="button" data-category="paseos" role="tab" aria-selected="false">Paseos</button>
-          <button class="vis-tab" type="button" data-category="gastro" role="tab" aria-selected="false">Gastronomía</button>
+          <button class="vis-tab" type="button" data-category="ocio" role="tab" aria-selected="false">Ocio</button>
         </div>
       </div>
     </section>
 
-    <!-- CONTROLES DE CATEGORÍA (solo cambia categoría) -->
+    <!-- CONTROLES DE CATEGORÍA -->
     <section class="vis-category-nav">
       <div class="container vis-category-nav__inner">
         <div class="vis-category-nav__left">
@@ -81,25 +81,25 @@
     </section>
 
     <!-- =========================
-         ARTE (VERSIÓN A)
+         ARTE
          ========================= -->
     <section class="vis-category is-active" id="cat-arte" data-category="arte" aria-label="Ruta de Arte">
       <div class="container">
         <header class="vis-section-head">
           <h2 class="vis-section-head__title">Arte</h2>
-          <p class="vis-section-head__text">Museos imprescindibles para una primera visita.</p>
+          <p class="vis-section-head__text">El triángulo del arte y museos imprescindibles para una primera visita.</p>
         </header>
 
-        <!-- CARD 1 -->
+        <!-- PRADO -->
         <article class="visit-split visit-split--alt0" data-carousel>
           <div class="visit-split__text">
             <p class="visit-split__kicker">Arte</p>
             <h3 class="visit-split__title">Museo del Prado</h3>
             <p class="visit-split__meta">Barrio del Retiro · 2–3 h</p>
             <p class="visit-split__desc">
-              Velázquez, Goya y Rubens. Una visita esencial para entender la historia del arte en España.
+              Velázquez, Goya y Rubens. Una visita esencial para entender la historia del arte en España. Las Meninas, El jardín de las delicias y el Dos de Mayo te esperan.
             </p>
-            <a class="visit-split__link" href="#" aria-label="Ver mapa Prado">Ver mapa</a>
+            <a class="visit-split__link" href="https://www.museodelprado.es" target="_blank" rel="noopener">Visitar web oficial</a>
           </div>
 
           <div class="visit-split__media">
@@ -114,16 +114,16 @@
           </div>
         </article>
 
-        <!-- CARD 2 (intercalada) -->
+        <!-- REINA SOFÍA -->
         <article class="visit-split visit-split--alt1" data-carousel>
           <div class="visit-split__text">
             <p class="visit-split__kicker">Arte</p>
             <h3 class="visit-split__title">Reina Sofía</h3>
             <p class="visit-split__meta">Atocha · 1–2 h</p>
             <p class="visit-split__desc">
-              Arte moderno y contemporáneo. Si vas a ver una sola cosa: el Guernica.
+              Arte moderno y contemporáneo. Si vas a ver una sola cosa: el Guernica de Picasso. También Dalí, Miró y el mejor arte español del siglo XX.
             </p>
-            <a class="visit-split__link" href="#" aria-label="Ver mapa Reina Sofía">Ver mapa</a>
+            <a class="visit-split__link" href="https://www.museoreinasofia.es" target="_blank" rel="noopener">Visitar web oficial</a>
           </div>
 
           <div class="visit-split__media">
@@ -138,16 +138,16 @@
           </div>
         </article>
 
-        <!-- CARD 3 -->
+        <!-- THYSSEN -->
         <article class="visit-split visit-split--alt0" data-carousel>
           <div class="visit-split__text">
             <p class="visit-split__kicker">Arte</p>
             <h3 class="visit-split__title">Thyssen</h3>
             <p class="visit-split__meta">Centro · 1–2 h</p>
             <p class="visit-split__desc">
-              Perfecto para conectar estilos: de los maestros al impresionismo. Ruta rápida, cero ruido.
+              Perfecto para conectar estilos: de los maestros antiguos al impresionismo y el pop art. Ruta rápida, cero ruido, máxima calidad.
             </p>
-            <a class="visit-split__link" href="#" aria-label="Ver mapa Thyssen">Ver mapa</a>
+            <a class="visit-split__link" href="https://www.museothyssen.org" target="_blank" rel="noopener">Visitar web oficial</a>
           </div>
 
           <div class="visit-split__media">
@@ -166,69 +166,131 @@
     </section>
 
     <!-- =========================
-         PASEOS (VERSIÓN B + PARALLAX)
+         PASEOS ()
          ========================= -->
     <section class="vis-category" id="cat-paseos" data-category="paseos" aria-label="Ruta de Paseos">
       <div class="container">
         <header class="vis-section-head">
           <h2 class="vis-section-head__title">Paseos</h2>
-          <p class="vis-section-head__text">Madrid se decide caminando. Planes sin mapa.</p>
+          <p class="vis-section-head__text">Madrid se decide caminando. Planes sin mapa, solo dejarse llevar.</p>
         </header>
       </div>
 
       <!-- FULL WIDTH blocks -->
       <article class="walk-block">
         <div class="walk-block__media">
-          <img class="walk-block__img js-parallax" src="https://i.pinimg.com/1200x/06/d0/20/06d0206fd32fb06206bc049c68a1c314.jpg" alt="Parque del Retiro" />
+          <img class="walk-block__img js-parallax" src="https://images.unsplash.com/photo-1730980510061-da3a5a8375b8?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Parque del Retiro" />
         </div>
         <div class="container walk-block__content">
           <p class="walk-block__kicker">Paseos</p>
           <h3 class="walk-block__title">Retiro</h3>
-          <p class="walk-block__desc">Verde lento: Estanque, Palacio de Cristal y paseos sin prisa.</p>
+          <p class="walk-block__desc">Verde lento: Estanque Grande, Palacio de Cristal y paseos sin prisa. Alquila una barca o simplemente siéntate bajo un árbol.</p>
         </div>
       </article>
 
       <article class="walk-block walk-block--alt">
         <div class="walk-block__media">
-          <img class="walk-block__img js-parallax" src="https://i.pinimg.com/1200x/6f/1f/90/6f1f908fa9c3bc2453701e6452063c4a.jpg" alt="Puerta de Alcalá" />
+          <img class="walk-block__img js-parallax" src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Puerta de Alcalá" />
         </div>
         <div class="container walk-block__content">
           <p class="walk-block__kicker">Paseos</p>
-          <h3 class="walk-block__title">Puerta de Alcalá</h3>
-          <p class="walk-block__desc">Atardecer y perspectiva: una entrada clásica a la ciudad.</p>
+          <h3 class="walk-block__title">Gran Vía</h3>
+          <p class="walk-block__desc">El Broadway madrileño. Edificios emblemáticos, tiendas, cines y la energía del centro. Ideal para caminar desde Cibeles hasta Plaza de España.</p>
         </div>
       </article>
 
       <article class="walk-block">
         <div class="walk-block__media">
-          <img class="walk-block__img js-parallax" src="https://i.pinimg.com/1200x/c2/67/71/c26771028bcc2a3edb6cf1878db54863.jpg" alt="Plaza Mayor" />
+          <img class="walk-block__img js-parallax" src="https://images.unsplash.com/photo-1643500997755-c0f9760cbcc0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Plaza Mayor" />
         </div>
         <div class="container walk-block__content">
           <p class="walk-block__kicker">Paseos</p>
-          <h3 class="walk-block__title">Plaza Mayor</h3>
-          <p class="walk-block__desc">Centro denso, pero bonito. Entra, mira, sal. No te quedes a lo obvio.</p>
+          <h3 class="walk-block__title">Madrid de los Austrias</h3>
+          <p class="walk-block__desc">Plaza Mayor, calle Cava Baja, Palacio Real. Centro histórico denso pero bonito. Entra, mira, sal. No te quedes en lo obvio.</p>
+        </div>
+      </article>
+
+      <article class="walk-block walk-block--alt">
+        <div class="walk-block__media">
+          <img class="walk-block__img js-parallax" src="https://images.unsplash.com/photo-1627754332050-f8daf87fc5e2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+        </div>
+        <div class="container walk-block__content">
+          <p class="walk-block__kicker">Paseos</p>
+          <h3 class="walk-block__title">Puerta de Alcalá</h3>
+          <p class="walk-block__desc">Uno de los grandes símbolos de Madrid, en el punto exacto donde la ciudad se abre. Neoclásica, sobria y monumental, no se visita: se atraviesa. Marca el paso entre el centro histórico y el Retiro, entre el ruido y el paseo. Mírala desde lejos, rodéala, entiende su escala. No es solo un icono, es un cruce.</p>
         </div>
       </article>
 
     </section>
 
     <!-- =========================
-         GASTRO (simple)
+         OCIO (antes Gastronomía)
          ========================= -->
-    <section class="vis-category" id="cat-gastro" data-category="gastro" aria-label="Ruta de Gastronomía">
+    <section class="vis-category" id="cat-ocio" data-category="ocio" aria-label="Ruta de Ocio">
       <div class="container">
         <header class="vis-section-head">
-          <h2 class="vis-section-head__title">Gastronomía</h2>
-          <p class="vis-section-head__text">Dos paradas que funcionan siempre.</p>
+          <h2 class="vis-section-head__title">Ocio</h2>
+          <p class="vis-section-head__text">Restaurantes, bares y planes para disfrutar Madrid de día y de noche.</p>
         </header>
 
+        <!-- Lamiak -->
         <article class="visit-split visit-split--alt0" data-carousel>
           <div class="visit-split__text">
-            <p class="visit-split__kicker">Gastro</p>
+            <p class="visit-split__kicker">Ocio</p>
+            <h3 class="visit-split__title">Lamiak</h3>
+            <p class="visit-split__meta">Chueca · Pintxos</p>
+            <p class="visit-split__desc">
+              Cocina vasca moderna en pleno Chueca. Pintxos creativos y raciones para compartir. Ambiente animado, ideal para tapear antes de salir.
+            </p>
+            <a class="visit-split__link" href="#" aria-label="Ver ubicación">Ver en mapa</a>
+          </div>
+
+          <div class="visit-split__media">
+            <div class="carousel" data-carousel-id="lamiak">
+              <div class="carousel__frame">
+                <img class="carousel__img" alt="Lamiak" />
+                <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Imagen anterior">‹</button>
+                <button class="carousel__btn carousel__btn--next" type="button" aria-label="Imagen siguiente">›</button>
+                <div class="carousel__count"><span class="carousel__idx">1</span>/<span class="carousel__total">2</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Rosi La Loca -->
+        <article class="visit-split visit-split--alt1" data-carousel>
+          <div class="visit-split__text">
+            <p class="visit-split__kicker">Ocio</p>
+            <h3 class="visit-split__title">Rosi La Loca</h3>
+            <p class="visit-split__meta">Malasaña · Taberna</p>
+            <p class="visit-split__desc">
+              Taberna castiza con rollo. Vermut, cañas y raciones tradicionales. Decoración vintage y ambiente auténtico. Perfecto para empezar la tarde.
+            </p>
+            <a class="visit-split__link" href="#" aria-label="Ver ubicación">Ver en mapa</a>
+          </div>
+
+          <div class="visit-split__media">
+            <div class="carousel" data-carousel-id="rosilaloca">
+              <div class="carousel__frame">
+                <img class="carousel__img" alt="Rosi La Loca" />
+                <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Imagen anterior">‹</button>
+                <button class="carousel__btn carousel__btn--next" type="button" aria-label="Imagen siguiente">›</button>
+                <div class="carousel__count"><span class="carousel__idx">1</span>/<span class="carousel__total">2</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mercado de San Miguel -->
+        <article class="visit-split visit-split--alt0" data-carousel>
+          <div class="visit-split__text">
+            <p class="visit-split__kicker">Ocio</p>
             <h3 class="visit-split__title">Mercado de San Miguel</h3>
-            <p class="visit-split__meta">Centro · 45–90 min</p>
-            <p class="visit-split__desc">Picoteo fácil. Entra con idea: 2–3 cosas y fuera.</p>
-            <a class="visit-split__link" href="#" aria-label="Ver mapa Mercado San Miguel">Ver mapa</a>
+            <p class="visit-split__meta">Centro · Mercado Gourmet</p>
+            <p class="visit-split__desc">
+              Picoteo fácil en pleno centro. Ostras, jamón, croquetas, vinos. Entra con idea: 2–3 cosas y fuera. Turístico pero bien hecho.
+            </p>
+            <a class="visit-split__link" href="https://www.mercadodesanmiguel.es" target="_blank" rel="noopener">Visitar web oficial</a>
           </div>
 
           <div class="visit-split__media">
@@ -237,19 +299,22 @@
                 <img class="carousel__img" alt="Mercado de San Miguel" />
                 <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Imagen anterior">‹</button>
                 <button class="carousel__btn carousel__btn--next" type="button" aria-label="Imagen siguiente">›</button>
-                <div class="carousel__count"><span class="carousel__idx">1</span>/<span class="carousel__total">1</span></div>
+                <div class="carousel__count"><span class="carousel__idx">1</span>/<span class="carousel__total">2</span></div>
               </div>
             </div>
           </div>
         </article>
 
+        <!-- La Latina -->
         <article class="visit-split visit-split--alt1" data-carousel>
           <div class="visit-split__text">
-            <p class="visit-split__kicker">Gastro</p>
+            <p class="visit-split__kicker">Ocio</p>
             <h3 class="visit-split__title">La Latina</h3>
-            <p class="visit-split__meta">Barrio · tarde/noche</p>
-            <p class="visit-split__desc">Calles, tapas, ritmo. Ideal si vienes a “sentir” Madrid.</p>
-            <a class="visit-split__link" href="#" aria-label="Ver mapa La Latina">Ver mapa</a>
+            <p class="visit-split__meta">Barrio · Tarde/Noche</p>
+            <p class="visit-split__desc">
+              Calles, tapas, ritmo. El barrio de los domingos y las cañas. Cava Baja, Cava Alta, El Rastro. Ideal si vienes a "sentir" Madrid.
+            </p>
+            <a class="visit-split__link" href="#" aria-label="Ver zona">Explorar barrio</a>
           </div>
 
           <div class="visit-split__media">
@@ -258,7 +323,31 @@
                 <img class="carousel__img" alt="La Latina" />
                 <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Imagen anterior">‹</button>
                 <button class="carousel__btn carousel__btn--next" type="button" aria-label="Imagen siguiente">›</button>
-                <div class="carousel__count"><span class="carousel__idx">1</span>/<span class="carousel__total">1</span></div>
+                <div class="carousel__count"><span class="carousel__idx">1</span>/<span class="carousel__total">2</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Círculo de Bellas Artes -->
+        <article class="visit-split visit-split--alt0" data-carousel>
+          <div class="visit-split__text">
+            <p class="visit-split__kicker">Ocio</p>
+            <h3 class="visit-split__title">Matadero</h3>
+            <p class="visit-split__meta">Madrid Rio · Espacio Cultural</p>
+            <p class="visit-split__desc">
+                Antiguo complejo industrial reconvertido en centro cultural. Ladrillo, naves abiertas y espacio para experimentar. Aquí no hay recorrido cerrado: entras, eliges y te mueves. Exposiciones, diseño, cine, conciertos y pensamiento contemporáneo conviven sin jerarquías. No vengas buscando un museo clásico. Ven a ver qué está pasando hoy.
+            </p>
+            <a class="visit-split__link" href="https://www.mataderomadrid.org/" target="_blank" rel="noopener">Visitar web oficial</a>
+          </div>
+
+          <div class="visit-split__media">
+            <div class="carousel" data-carousel-id="cba">
+              <div class="carousel__frame">
+                <img class="carousel__img" alt="Círculo de Bellas Artes" />
+                <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Imagen anterior">‹</button>
+                <button class="carousel__btn carousel__btn--next" type="button" aria-label="Imagen siguiente">›</button>
+                <div class="carousel__count"><span class="carousel__idx">1</span>/<span class="carousel__total">2</span></div>
               </div>
             </div>
           </div>
@@ -277,12 +366,12 @@
 
   </main>
 
-  <!-- jQuery (como en clase) -->
+  <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <!-- Simple Parallax (CDN) -->
+  <!-- Simple Parallax -->
   <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
 
   <script src="js/script.js"></script>

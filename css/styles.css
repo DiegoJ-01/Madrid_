@@ -1,8 +1,3 @@
-/* =========================================================
-   MADRID GUIDE - PREMIUM DESIGN
-   Inspirado en arquitectura de lujo y diseño editorial
-   ========================================================= */
-
 /* BASE / RESET */
 *,
 *::before,
@@ -259,7 +254,7 @@ body:not(.theme-dark) .theme-toggle__icon--light {
   inset: 0;
   background-image: 
     linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5)),
-    url("./header.jpg");
+    url('../img/eduardo-rodriguez-7GWTKyvUjag-unsplash.jpg');
   background-size: cover;
   background-position: center;
   transform: scale(1);
@@ -405,7 +400,7 @@ body.theme-dark .btn--primary {
 }
 
 .btn--primary:hover {
-  background: transparent;
+  background: #ffffff;
   color: var(--color-accent);
 }
 

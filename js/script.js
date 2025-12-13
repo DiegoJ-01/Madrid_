@@ -122,7 +122,7 @@
     function initVisitasCategories() {
       if (!$('body').hasClass('page-visitas')) return;
   
-      const order = ['arte', 'paseos', 'gastro'];
+      const order = ['arte', 'paseos', 'ocio'];
       let current = 'arte';
   
       function setCategory(cat, animate = true) {
@@ -188,26 +188,44 @@
       if (!$('body').hasClass('page-visitas')) return;
   
       const IMAGES = {
+        // ARTE
         prado: [
-          "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvMy1kZS1tYXlvLWdveWEuanBnIiwicmVzaXplLDE1MDB8Zm9ybWF0LHdlYnAiXX0.t83BNU1x8wHKolw0u6FS-OZqTth3m4zdlA1--27xEDE.webp",
-          "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNWY1MGM1MjhhZDM1Mi5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.osXPvzB5gvHSQwWX4BZcLGR-6Phf14s8YkqQYngDocY.webp",
-          "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNjNhZWUwMTQzNWYzOC5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.bjR2KR2adxFRqS0skrcRILn9ruzIkI72lyhESC4sD8s.webp"
+            "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvMy1kZS1tYXlvLWdveWEuanBnIiwicmVzaXplLDE1MDB8Zm9ybWF0LHdlYnAiXX0.t83BNU1x8wHKolw0u6FS-OZqTth3m4zdlA1--27xEDE.webp",
+            "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNWY1MGM1MjhhZDM1Mi5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.osXPvzB5gvHSQwWX4BZcLGR-6Phf14s8YkqQYngDocY.webp",
+            "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNjNhZWUwMTQzNWYzOC5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.bjR2KR2adxFRqS0skrcRILn9ruzIkI72lyhESC4sD8s.webp"
+          ],
+          reina: [
+            "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvcGFibG8tcGljYXNzby1ndWVybmljYS5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.tvCZ-woMXn0xZf2uCJMiKk6r1o_-iIvJhkyaFMufiTA.webp",
+            "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvYXMwMTk4NV83LmpwZyIsInJlc2l6ZSwxNTAwfGZvcm1hdCx3ZWJwIl19.tWNt61-YqcXUIkjsgDDiPXaXoxxYxpKUE0HTO-EfRH4.webp",
+            "https://recursos.museoreinasofia.es/styles/large_portrait/public/Obra/AD06620_2.jpg.webp"
+          ],
+          thyssen: [
+            "https://upload.wikimedia.org/wikipedia/commons/9/95/Edgar_Degas_-_Balan%C3%A7ant_danseurs.jpg",
+            "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNjIyMzM3MDI3MThlMS5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.Hl2FMrV9vFko-1sjVAzRkv5sBKHfvW6Rt_1aqxfHav0.webp",
+            "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNjAxMTYwYmIwZTY5Mi5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.0uc9FRx7wGSBNWZJZHCuEcp1sdGA6BovOmez8fSiNRM.webp"
         ],
-        reina: [
-          "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvcGFibG8tcGljYXNzby1ndWVybmljYS5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.tvCZ-woMXn0xZf2uCJMiKk6r1o_-iIvJhkyaFMufiTA.webp",
-          "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvYXMwMTk4NV83LmpwZyIsInJlc2l6ZSwxNTAwfGZvcm1hdCx3ZWJwIl19.tWNt61-YqcXUIkjsgDDiPXaXoxxYxpKUE0HTO-EfRH4.webp",
-          "https://recursos.museoreinasofia.es/styles/large_portrait/public/Obra/AD06620_2.jpg.webp"
+    
+  
+        // OCIO
+        lamiak: [
+          "https://scontent-mad2-1.xx.fbcdn.net/v/t39.30808-6/504186439_10162845913941726_592603239181682945_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=aBMj7jiCw7IQ7kNvwHW7PGW&_nc_oc=Adli1UH7XOkuVsaCuzWqNCHRtr6u7lI3vG_gvsNKUN_V8MBPfkAzWIi8uBdGheaP9XU&_nc_zt=23&_nc_ht=scontent-mad2-1.xx&_nc_gid=WlOAPP8VFujjsAqkV-NFIw&oh=00_AfngaVjpCJQu-_JRlc75Kz0LwX8DG1Io0Fd_oQ8M4SxGDQ&oe=6943813F",
+          "https://production-data.worldofmouth.app/images/754f57dc-d59f-4d61-9bc3-1e8363eeec82.jpg"
         ],
-        thyssen: [
-          "https://upload.wikimedia.org/wikipedia/commons/9/95/Edgar_Degas_-_Balan%C3%A7ant_danseurs.jpg",
-          "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNjIyMzM3MDI3MThlMS5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.Hl2FMrV9vFko-1sjVAzRkv5sBKHfvW6Rt_1aqxfHav0.webp",
-          "https://historia-arte.com/_/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpbSI6WyJcL2FydHdvcmtcL2ltYWdlRmlsZVwvNjAxMTYwYmIwZTY5Mi5qcGciLCJyZXNpemUsMTUwMHxmb3JtYXQsd2VicCJdfQ.0uc9FRx7wGSBNWZJZHCuEcp1sdGA6BovOmez8fSiNRM.webp"
+        rosilaloca: [
+          "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2025/08/20/17557076658072.jpg",
+          "https://planesenmadrid.es/wp-content/uploads/2021/07/restaurante-rosi-la-loca.jpg"
         ],
         sanmiguel: [
-          "https://i.pinimg.com/1200x/b0/d1/1f/b0d11f864afc8d20e41e0866dc485c66.jpg"
+          "https://images.unsplash.com/photo-1664695407561-72d0d171e44e?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://images.unsplash.com/photo-1583992332991-8f9ce155a0de?w=1200&q=80https://www.miradormadrid.com/wp-content/uploads/2021/07/Mercado-de-San-Miguel-Comunicacion-2.jpg"
         ],
         latina: [
-          "https://i.pinimg.com/736x/25/d8/9b/25d89be892fbd95c5766b273dd110c85.jpg"
+          "https://offloadmedia.feverup.com/madridsecreto.co/wp-content/uploads/2019/11/04043917/shutterstock_1548317732-1.jpg",
+          "https://offloadmedia.feverup.com/madridsecreto.co/wp-content/uploads/2022/10/27170605/plaza-san-andres-la-latina.jpg"
+        ],
+        cba: [
+          "https://arqa.com/wp-content/uploads/2014/05/239.jpg",
+          "https://images.unsplash.com/photo-1644137676416-60e3001727aa?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ]
       };
   
