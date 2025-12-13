@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Madrid · Clima</title>
-  <meta name="description" content="Clima de Madrid: temperaturas mensuales, lluvia y mejor época para viajar." />
+
+  <meta name="description" content="Clima de Madrid: qué esperar por estaciones y qué llevar en la maleta." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,21 +14,23 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
-<body class="theme-light has-header">
+<body class="theme-light page-clima">
+
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="site-logo" href="index.html">
+      <a class="site-logo" href="index.html" aria-label="Ir a inicio">
         <span class="site-logo__mark">M</span>
         <span class="site-logo__text">Madrid</span>
       </a>
 
-      <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+      <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false">
         <span class="burger__line"></span>
         <span class="burger__line"></span>
         <span class="burger__line"></span>
       </button>
 
-      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+      <nav class="main-nav" aria-label="Navegación principal">
         <ul class="main-nav__list">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="visitas.html">Visitas</a></li>
@@ -35,66 +38,84 @@
         </ul>
 
         <button class="theme-toggle" type="button" aria-label="Cambiar tema">
-          <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
-          <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
+          <span class="theme-toggle__icon theme-toggle__icon--light">☀</span>
+          <span class="theme-toggle__icon theme-toggle__icon--dark">◐</span>
         </button>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero hero--subpage">
-      <div class="container hero__content">
-        <p class="hero__eyebrow">Clima</p>
-        <h1 class="hero__title">Madrid mes a mes</h1>
-        <p class="hero__subtitle">Temperatura media y recomendaciones rápidas.</p>
+    <!-- HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="page-hero__eyebrow">Clima</p>
+        <h1 class="page-hero__title">Cuatro estaciones claras</h1>
+        <p class="page-hero__subtitle">
+          Mucho sol, veranos duros, noches frescas. Madrid se disfruta si vienes preparado.
+        </p>
       </div>
     </section>
 
+    <!-- TARJETAS DE ESTACIONES -->
     <section class="section">
-      <div class="container climate-layout">
+      <div class="container">
+        <div class="info-grid">
+          <article class="info-card">
+            <h2>Primavera</h2>
+            <p>Suave, luz bonita. Capa ligera + algo para la noche. Temperaturas entre 10-22°C.</p>
+          </article>
 
-        <div class="climate-card">
-          <h2 class="climate-card__title">Temperatura media</h2>
-          <p class="climate-card__text">Gráfico de línea basado en Chart.js.</p>
+          <article class="info-card">
+            <h2>Verano</h2>
+            <p>Calor serio. Agua, sombra, y plan nocturno. Máximas de hasta 33°C.</p>
+          </article>
 
-          <div class="climate-chart">
-            <canvas id="climateChart"></canvas>
-          </div>
+          <article class="info-card">
+            <h2>Otoño</h2>
+            <p>Más fresco, muy caminable. Chaqueta fina. Ideal para pasear por la ciudad.</p>
+          </article>
 
-          <div class="climate-units">
-            <span class="climate-units__label">Unidad</span>
-            <button class="climate-units__btn is-active" type="button" data-unit="c">ºC</button>
-            <button class="climate-units__btn" type="button" data-unit="f">ºF</button>
-          </div>
+          <article class="info-card">
+            <h2>Invierno</h2>
+            <p>Frío seco. Abrigo + capas, pero sin drama. Mínimas de hasta 2°C.</p>
+          </article>
         </div>
-
-        <aside class="climate-side">
-          <div class="mini-panel">
-            <h3>Mejor época</h3>
-            <p>Primavera y otoño: clima suave y ciudad caminable.</p>
-          </div>
-          <div class="mini-panel">
-            <h3>Verano</h3>
-            <p>Mucho calor a mediodía: mejor mañanas y noches.</p>
-          </div>
-          <div class="mini-panel">
-            <h3>Invierno</h3>
-            <p>Frío moderado pero con bastantes días de sol.</p>
-          </div>
-        </aside>
-
       </div>
     </section>
+
+    <!-- GRÁFICA DE CLIMA CON CHART.JS -->
+    <section class="climate-chart-section">
+      <div class="container">
+        <div class="chart-container">
+          <div class="chart-header">
+            <h2>Temperaturas y precipitaciones</h2>
+            <p>Datos mensuales promedio para planificar tu visita</p>
+          </div>
+          <canvas id="climateChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p>Guía de Madrid · Práctica Web</p>
+        <a class="site-footer__link" href="#" aria-label="GitHub">GitHub</a>
+      </div>
+    </footer>
   </main>
 
-  <!-- jQuery (CDN profe) -->
+  <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Simple Parallax -->
+  <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
 
   <script src="js/script.js"></script>
 </body>
